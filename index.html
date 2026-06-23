@@ -92,20 +92,32 @@ nav{
 
 /* ─── HERO ─── */
 #home{
-  position:relative;height:100vh;min-height:700px;
-  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  height:80vh; /* Ridotto da 100vh per occupare meno spazio verticale */
+  min-height:500px; /* Ridotto da 700px per adattarsi meglio a schermi piccoli */
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow:hidden;
   margin-top:125px;
 }
 .hero-bg{
-  position:absolute;inset:0;
+  position:absolute;
+  inset:0;
   z-index:1;
 }
 /* Configurazione per fare in modo che l'aria del tag img copra tutta la sezione */
-.hero-bg img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  
+  /* Dice all'immagine di comportarsi come un background-size: cover */
+  object-fit: cover; 
+  
+  /* SPOSTA L'INQUADRATURA: 
+      Incolla il lato destro della foto dello scoglio del Conero al bordo dello schermo, 
+      mostrando la foto da metà verso destra */
+  object-position: 70% 50%; 
 }
 .hero-overlay{
   position:absolute;inset:0;
@@ -136,10 +148,7 @@ nav{
   letter-spacing:0.2em;text-transform:uppercase;
   color:var(--accent);margin-bottom:32px;
 }
-.hero-line{
-  width:60px;height:2px;background:var(--accent);
-  margin:0 auto;
-}
+
 
 /* ─── SECTIONS ─── */
 .s{max-width:1140px;margin:0 auto;padding:80px 60px}
@@ -293,7 +302,7 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
 }
 .gdpr-checkbox-label{
   font-size:14px;font-weight:400;
-  color:#2c2c2c;line-height:1.75;
+  color:#e8d5c4;line-height:1.75;
 }
 .gdpr-checkbox-label a{
   color:#d946a6;font-weight:500;
@@ -486,6 +495,15 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   .contatti-grid{grid-template-columns:1fr}
   .hero-line{display:none}
 }
+
+/* Correzione per dispositivi mobile (smartphone) */
+@media (max-width: 768px) {
+  #home {
+    margin-top: 60px; 
+    height: 60vh;
+    min-height: 400px;
+  }
+}
 </style>
 </head>
 <body>
@@ -532,7 +550,6 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
     <h1 class="hero-title">Conero<br>Surf<br>Club</h1>
     
     <p class="hero-sub">RIDE.LIVE.PROTECT.SHARE</p>
-    <div class="hero-line"></div>
   </div>
 </section>
 
@@ -633,16 +650,18 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
         <div class="gdpr-notice">
           <h4>Trattamento dei dati personali (GDPR):</h4>
           <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679.</p>
-          <p><a href="#">Leggi l'informativa completa sulla Privacy →</a></p>
+          <p><a href="#">Leggi l'informativa completa sulla Privacy →</a></p>       
         </div>
         
         <div class="gdpr-checkbox-container">
-          <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()">
-          <div>
-            <label for="gdprCheckbox" class="gdpr-checkbox-label">Ho letto e accetto l'<a href="#">informativa privacy</a> e acconsento al trattamento dei miei dati personali da parte di Conero Surf Club per le finalità associative descritte.</label>
-            <span class="gdpr-mandatory">(Obbligatorio)</span>
-          </div>
-        </div>
+  <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()"> 
+  <div>
+    <label for="gdprCheckbox" class="gdpr-checkbox-label">
+      Ho letto l'<a href="/privacy-policy.html" target="_blank">informativa privacy</a> e comprendo che i miei dati saranno trattati da Conero Surf Club per la gestione della domanda di ammissione a socio.
+    </label>
+    <span class="gdpr-mandatory">(Obbligatorio)</span>
+  </div>
+</div>
         
         <div class="gdpr-btn-wrapper">
           <button class="gdpr-btn" id="gdprBtn" onclick="openModulo()" disabled>Apri il Modulo di Iscrizione →</button>
@@ -751,8 +770,8 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
       </div>
     </div>
     
-    <div class="contatti-info">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+    <div class="contatti-card">
+   
         <div>
           <div class="info-label">Email</div>
           <div class="info-value"><a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a></div>
@@ -761,7 +780,7 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
           <div class="info-label">Instagram</div>
           <div class="info-value"><a href="https://www.instagram.com/conerosurfclub" target="_blank">@conerosurfclub</a></div>
         </div>
-      </div>
+      
     </div>
   </div>
 </div>
