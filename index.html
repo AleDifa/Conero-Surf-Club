@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conero Surf Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --black:#0d0d0d;
+  --white:#eeeae3;
+  --accent:#64c8e8;
+  --accent2:#3ab0d0;
+  --mid:#181818;
+  --card:#1e1e1e;
+  --border:rgba(255,255,255,0.08);
+}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Barlow',sans-serif;
+  overflow-x:hidden;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(13,13,13,0.97);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:76px;
+}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo img{
+  height:54px;width:auto;
+  opacity:0.92;
+}
+.nav-logo-text{
+  font-family:'Anton',sans-serif;
+  font-size:22px;letter-spacing:0.05em;
+  text-transform:uppercase;color:var(--white);
+  line-height:1.05;
+}
+.nav-logo-sub{
+  display:none;
+}
+
+/* second row – link strip */
+.nav-bar{
+  border-top:1px solid var(--border);
+  background:#0b0b0b;
+  display:flex;justify-content:center;
+  overflow-x:auto;scrollbar-width:none;
+}
+.nav-bar::-webkit-scrollbar{display:none}
+.nav-bar a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  text-decoration:none;
+  padding:16px 26px;display:block;
+  border-right:1px solid var(--border);
+  white-space:nowrap;
+  transition:color 0.2s;
+  position:relative;
+}
+.nav-bar a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--accent);
+  transform:scaleX(0);transition:transform 0.25s;
+}
+.nav-bar a:first-child{border-left:1px solid var(--border)}
+.nav-bar a:hover,.nav-bar a.active{color:var(--white)}
+.nav-bar a.active::after,.nav-bar a:hover::after{transform:scaleX(1)}
+.nav-bar a.cta{color:var(--accent);background:rgba(100,200,232,0.05)}
+.nav-bar a.cta:hover{background:var(--accent);color:#000}
+.nav-bar a.cta::after{display:none}
+
+/* mobile */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white)}
+.mobile-menu{display:none;flex-direction:column;background:#0b0b0b;border-top:1px solid var(--border);padding:8px 0}
+.mobile-menu a{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;padding:15px 28px;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;display:block}
+.mobile-menu a:hover{color:var(--white)}
+.mobile-menu a.cta{color:var(--accent)}
+.mobile-menu.open{display:flex}
+
+/* ─── HERO ─── */
+#home{
+  position:relative;height:100vh;min-height:700px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  margin-top:152px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(13,13,13,0.4),rgba(13,13,13,0.6)),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="wave" x="0" y="0" width="200" height="100" patternUnits="userSpaceOnUse"><path d="M0,50 Q50,20 100,50 T200,50" fill="none" stroke="rgba(100,200,232,0.1)" stroke-width="2"/></pattern></defs><rect width="1200" height="800" fill="%230d0d0d"/><rect width="1200" height="800" fill="url(%23wave)"/></svg>');
+  background-size:cover;background-position:center;
+  z-index:1;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(100,200,232,0.02),rgba(13,13,13,0.5));
+  z-index:2;
+}
+.hero-content{
+  position:relative;z-index:10;
+  text-align:center;
+  max-width:800px;
+  padding:40px;
+}
+.hero-est{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:0.3em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);
+  margin-bottom:32px;
+}
+.hero-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(64px,12vw,180px);letter-spacing:0.06em;
+  color:var(--white);line-height:0.95;
+  margin-bottom:24px;
+}
+.hero-sub{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(14px,2vw,18px);font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:32px;
+}
+.hero-line{
+  width:60px;height:2px;background:var(--accent);
+  margin:0 auto;
+}
+
+/* ─── SECTIONS ─── */
+.s{max-width:1140px;margin:0 auto;padding:80px 60px}
+hr.sep{height:1px;background:var(--border);border:none;margin:0}
+.label{
+  display:inline-block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:12px;
+}
+.big-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(48px,8vw,80px);letter-spacing:0.06em;
+  color:var(--white);line-height:1.05;
+  margin-bottom:56px;
+}
+.section-intro{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,0.65);margin-bottom:40px;
+  max-width:820px;
+}
+
+/* ─── CHI SIAMO ─── */
+.chi-layout{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;
+}
+.chi-text p{
+  font-size:16px;font-weight:300;line-height:1.9;
+  color:rgba(255,255,255,0.7);margin-bottom:22px;
+}
+.chi-text p strong{color:var(--white);font-weight:500}
+.chi-text a{color:var(--accent);text-decoration:none;font-weight:500;transition:color 0.2s}
+.chi-text a:hover{color:var(--white)}
+.subsection{margin-bottom:60px}
+.subsection h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:16px;
+}
+.subsection p{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.65);
+}
+
+/* ─── MANIFESTO ─── */
+.manifesto-grid{
+  display:grid;grid-template-columns:1fr;gap:36px;
+}
+.manifesto-item{
+  padding:32px;border-left:3px solid var(--accent);
+  background:rgba(100,200,232,0.03);
+}
+.manifesto-item h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:14px;
+}
+.manifesto-item p{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.65);
+}
+
+/* ─── EVENTI ─── */
+.eventi-content{
+  background:rgba(100,200,232,0.02);
+  border:1px solid rgba(100,200,232,0.1);
+  padding:60px 40px;
+  text-align:center;
+  margin-bottom:40px;
+}
+.eventi-content p{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,0.68);margin-bottom:20px;
+}
+.ig-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--accent);text-decoration:none;font-weight:500;
+  border:1px solid var(--accent);padding:10px 20px;
+  transition:all 0.2s;
+}
+.ig-btn:hover{background:var(--accent);color:#000}
+.ig-btn svg{width:18px;height:18px}
+.eventi-prop{
+  background:rgba(100,200,232,0.02);
+  border:1px solid rgba(100,200,232,0.1);
+  padding:44px 40px;
+  text-align:center;
+}
+.eventi-prop h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:14px;
+}
+.eventi-prop p{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.65);
+}
+
+/* ─── DOCUMENTI & FAQ ─── */
+.doc-faq-container{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:80px;
+}
+.gdpr-notice{
+  border:2px solid #e8d5c4;
+  border-radius:16px;
+  padding:32px;
+  margin:40px 0;
+}
+.gdpr-notice h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:15px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:#a0553a;
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.gdpr-notice h4::before{content:'🔒';font-size:16px}
+.gdpr-notice p{
+  font-size:14px;font-weight:400;
+  color:#2c2c2c;
+  line-height:1.75;
+  margin-bottom:12px;
+}
+.gdpr-notice p:last-of-type{margin-bottom:0}
+.gdpr-notice strong{color:#333;font-weight:600}
+.gdpr-notice a{
+  color:#d946a6;font-weight:500;
+  text-decoration:none;border-bottom:1px dotted #d946a6;
+  transition:color 0.2s;
+}
+.gdpr-notice a:hover{color:#c21e8a}
+.required-marker{color:#d946a6;font-weight:700}
+
+/* Checkbox GDPR */
+.gdpr-checkbox-container{
+  border:2px solid #e8d5c4;
+  border-radius:16px;
+  padding:28px 32px;
+  margin-bottom:28px;
+  display:flex;align-items:flex-start;gap:16px;
+}
+.gdpr-checkbox-container input[type="checkbox"]{
+  width:24px;height:24px;
+  flex-shrink:0;margin-top:2px;
+  accent-color:#d946a6;
+  cursor:pointer;
+}
+.gdpr-checkbox-label{
+  font-size:14px;font-weight:400;
+  color:#2c2c2c;line-height:1.75;
+}
+.gdpr-checkbox-label a{
+  color:#d946a6;font-weight:500;
+  text-decoration:none;border-bottom:1px dotted #d946a6;
+}
+.gdpr-checkbox-label a:hover{color:#c21e8a}
+.gdpr-mandatory{
+  font-size:12px;font-weight:600;
+  color:#a0553a;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  margin-top:8px;
+  display:block;
+}
+
+/* Bottone Iscrizione */
+.gdpr-btn-wrapper{
+  text-align:center;
+}
+.gdpr-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#9b7ec4,#7d6ba6);
+  color:#fff;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:16px 48px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all 0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+.gdpr-btn:hover{
+  background:linear-gradient(135deg,#8a6fb5,#6e5c97);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(157,107,196,0.3);
+}
+.gdpr-btn:disabled{
+  background:#c9bdd4;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+.gdpr-btn-hint{
+  font-size:12px;font-weight:300;
+  color:#999;
+  margin-top:12px;
+  letter-spacing:0.04em;
+}
+.doc-section h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:24px;
+}
+.doc-section p{
+  font-size:15px;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.65);margin-bottom:16px;
+}
+.doc-drive-link{
+  display:inline-block;
+  color:var(--accent);text-decoration:none;font-weight:500;
+  border:1px solid var(--accent);padding:10px 20px;
+  transition:all 0.2s;
+}
+.doc-drive-link:hover{background:var(--accent);color:#000}
+
+/* ─── FAQ ─── */
+.faq-list{max-width:100%;border-top:1px solid var(--border)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;background:none;border:none;color:var(--white);text-align:left;padding:24px 0;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:color 0.2s}
+.faq-btn:hover{color:var(--accent)}
+.faq-icon{font-size:22px;color:var(--accent);flex-shrink:0;font-style:normal;font-family:'Barlow',sans-serif}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-ans.open{max-height:400px;padding-bottom:22px}
+.faq-ans p{font-size:15px;font-weight:300;color:rgba(255,255,255,0.52);line-height:1.85}
+.faq-ans a{color:var(--accent)}
+
+/* ─── CONTATTI ─── */
+.contatti-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;
+  margin-bottom:60px;
+}
+.contatti-card{
+  background:rgba(100,200,232,0.02);
+  border:1px solid rgba(100,200,232,0.1);
+  padding:40px;
+  text-align:center;
+}
+.contatti-card h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:16px;
+  line-height:1.6;
+}
+.contatti-card p{
+  font-size:15px;font-weight:300;color:rgba(255,255,255,0.65);
+}
+.contatti-card a{
+  color:var(--accent);text-decoration:none;font-weight:500;
+}
+.contatti-card a:hover{text-decoration:underline}
+.contatti-info{
+  background:rgba(100,200,232,0.02);
+  border:1px solid rgba(100,200,232,0.1);
+  padding:40px;
+  text-align:center;
+}
+.info-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);
+  margin-bottom:8px;
+}
+.info-value{
+  font-size:16px;font-weight:300;color:var(--white);
+  margin-bottom:20px;
+}
+.info-value a{
+  color:var(--accent);text-decoration:none;font-weight:500;
+}
+.info-value a:hover{text-decoration:underline}
+
+/* ─── IMG BREAK ─── */
+.img-break{
+  height:50vh;min-height:400px;
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.img-break-caption{
+  position:absolute;left:60px;bottom:40px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  z-index:10;
+}
+
+/* ─── FOOTER ─── */
+footer{background:#0a0f0f;border-top:1px solid var(--border);padding:60px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:60px}
+footer .f-col{display:flex;flex-direction:column;gap:20px}
+footer .f-col-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+footer .f-name{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:0.06em;color:var(--white);margin-bottom:12px}
+footer .f-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,0.48);line-height:1.7}
+footer .f-code{font-size:12px;font-weight:300;color:rgba(255,255,255,0.6);margin-top:20px}
+footer .f-code strong{color:var(--white);font-weight:500}
+footer a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:300;transition:color 0.2s}
+footer a:hover{color:var(--white)}
+footer .ig-icon{display:inline-block;width:20px;height:20px}
+footer .f-bottom{grid-column:1/-1;border-top:1px solid var(--border);padding-top:32px;text-align:center}
+footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
+
+/* ─── LIGHTBOX ─── */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:9999;align-items:center;justify-content:center}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:26px;right:32px;font-size:30px;color:rgba(255,255,255,0.35);cursor:pointer;background:none;border:none;transition:color 0.2s;font-family:'Barlow',sans-serif}
+.lb-close:hover{color:var(--white)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1080px){.nav-bar a{padding:14px 16px;font-size:12px}}
+@media(max-width:860px){
+  .nav-bar{display:none}.hamburger{display:flex}
+  .s{padding:60px 24px}
+  .chi-layout{grid-template-columns:1fr;gap:44px}
+  .doc-faq-container{grid-template-columns:1fr;gap:44px}
+  .contatti-grid{grid-template-columns:1fr;gap:30px}
+  .manifesto-grid{grid-template-columns:1fr}
+  .big-title{font-size:clamp(36px,8vw,60px)}
+  footer{grid-template-columns:1fr;gap:40px;padding:40px 24px}
+  .img-break{height:35vh;min-height:300px}
+  .img-break-caption{left:24px;bottom:24px}
+  .gdpr-checkbox-container{padding:20px 24px;margin-bottom:20px}
+  .gdpr-btn{padding:14px 40px;font-size:13px}
+}
+@media(max-width:600px){
+  .nav-top{padding:0 24px;height:64px}
+  .nav-logo img{height:44px}
+  .nav-logo-text{font-size:18px}
+  .s{padding:48px 20px}
+  #home{margin-top:128px;min-height:600px}
+  .hero-est{font-size:10px;margin-bottom:20px}
+  .hero-title{font-size:clamp(48px,10vw,80px);margin-bottom:16px}
+  .hero-sub{font-size:clamp(12px,1.8vw,16px);margin-bottom:20px}
+  .contatti-grid{grid-template-columns:1fr}
+  .hero-line{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="nav-top">
+    <a href="#home" class="nav-logo">
+      <img src="img/conero_surf club_logo.jpg" alt="Logo" />
+      <div class="nav-logo-text">
+        Conero Surf Club
+        <span class="nav-logo-sub"></span>
+      </div>
+    </a>
+    <button class="hamburger" id="ham" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-bar" id="navBar">
+    <a href="#home"       data-s="home">Home</a>
+    <a href="#chi-siamo"  data-s="chi-siamo">Chi Siamo</a>
+    <a href="#manifesto"  data-s="manifesto">Manifesto</a>
+    <a href="#eventi"     data-s="eventi">Eventi</a>
+    <a href="#doc-faq"    data-s="doc-faq">Documenti & FAQ</a>
+    <a href="#contatti"   data-s="contatti">Contatti</a>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"       onclick="closeMenu()">Home</a>
+    <a href="#chi-siamo"  onclick="closeMenu()">Chi Siamo</a>
+    <a href="#manifesto"  onclick="closeMenu()">Manifesto</a>
+    <a href="#eventi"     onclick="closeMenu()">Eventi</a>
+    <a href="#doc-faq"    onclick="closeMenu()">Documenti & FAQ</a>
+    <a href="#contatti"   onclick="closeMenu()">Contatti</a>
+  </div>
+</nav>
+
+<!-- HERO HOME -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-est">Riviera del Conero · Est. 2026</p>
+    <h1 class="hero-title">Conero<br>Surf<br>Club</h1>
+    <p class="hero-sub">RIDE.LIVE.PROTECT.SHARE</p>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<div id="chi-siamo">
+  <div class="s">
+    <span class="label">La nostra storia</span>
+    <h2 class="big-title">Chi<br>Siamo</h2>
+    
+    <div class="chi-layout">
+      <div class="chi-text">
+        <div class="subsection">
+          <h3>La Nostra Identità</h3>
+          <p>Il Conero Surf Club è un'associazione culturale e sociale nata dalla passione per il mare e dalla volontà di creare uno spazio dove la comunità possa condividere valori di rispetto, sostenibilità e consapevolezza ambientale.</p>
+          <p style="margin-top:16px">Non siamo un'associazione sportiva dilettantistica. Il nostro obiettivo è puramente sociale e culturale: vogliamo valorizzare il territorio del Conero, preservare la memoria della tradizione del surf, promuovere la consapevolezza ambientale e costruire una comunità inclusiva e consapevole.</p>
+        </div>
+      </div>
+      
+      <div class="chi-text">
+        <div class="subsection">
+          <h3>Il Nostro Logo</h3>
+          <p>Il nostro logo rappresenta l'essenza dell'associazione: un triangolo che evoca la montagna del Conero e le onde del mare che lo circondano a Nord e a Sud. Le onde simboleggiano il movimento perpetuo dell'oceano e l'energia del surf, mentre il triangolo, che si erge in mezzo al mare, rappresenta una freccia che orienta le nostre scelte e le nostre azioni verso il mare e per il mare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- IMG BREAK -->
+<div class="img-break" style="background-image: linear-gradient(135deg, rgba(13,13,13,0.3), rgba(13,13,13,0.5)), url('img/conero_surf_club_membri_comunita.JPG');">
+</div>
+
+<!-- MANIFESTO -->
+<div id="manifesto">
+  <div class="s">
+    <span class="label">I nostri principi</span>
+    <h2 class="big-title">Manifesto</h2>
+    
+    <div class="manifesto-grid">
+      <div class="manifesto-item">
+        <h3>1. Preservare, Tutelare e Valorizzare il Territorio</h3>
+        <p>Il Conero è un patrimonio naturale e culturale unico. Ci impegniamo a preservare, tutelare e valorizzare il territorio, con particolare attenzione alla costa, al mare e all'ambiente naturale.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>2. Divulgare i Principi della Cultura Marina</h3>
+        <p>Promuoviamo la conoscenza, la storia e i valori legati al surf e alla tradizione marina come pratica culturale legata alla natura.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>3. Promuovere Inclusione e Comunità</h3>
+        <p>Favoriamo inclusione, aggregazione e collaborazione tra persone di tutte le età e provenienze.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>4. Promuovere Sicurezza, Formazione e Consapevolezza</h3>
+        <p>La sicurezza e la consapevolezza ambientale dei nostri soci sono prioritarie. Organizziamo attività di formazione e iniziative educative.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>5. Divulgare e Preservare la Tradizione Culturale</h3>
+        <p>Divulghiamo, tuteliamo e valorizziamo la tradizione e la storia della cultura marina nel Conero.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- EVENTI -->
+<div id="eventi">
+  <div class="s">
+    <span class="label">Partecipa</span>
+    <h2 class="big-title">Eventi</h2>
+    
+    <div class="eventi-content">
+      <p>Per rimanere sempre aggiornato sugli eventi, segui la nostra pagina Instagram:</p>
+      <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        @conerosurfclub
+      </a>
+    </div>
+    
+    <div class="eventi-prop">
+      <h3>Vuoi Proporre un Evento?</h3>
+      <p>Diventa socio del Conero Surf Club e costruiamo insieme il prossimo evento. La tua voce è importante.</p>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- DOCUMENTI & FAQ -->
+<div id="doc-faq">
+  <div class="s">
+    <span class="label">Informazioni</span>
+    <h2 class="big-title">Documenti<br>& FAQ</h2>
+    
+    <div class="doc-faq-container">
+      <!-- DOCUMENTI -->
+      <div class="doc-section">
+        <h3>Documenti</h3>
+        <p>Accedi ai nostri documenti pubblici e moduli di iscrizione:</p>
+        
+        <div class="gdpr-notice">
+          <h4>Trattamento dei dati personali (GDPR):</h4>
+          <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679. Il modulo è gestito tramite Google Forms.</p>
+          <p><a href="#">Leggi l'informativa completa sulla Privacy →</a></p>
+        </div>
+        
+        <div class="gdpr-checkbox-container">
+          <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()">
+          <div>
+            <label for="gdprCheckbox" class="gdpr-checkbox-label">Ho letto e accetto l'<a href="#">informativa privacy</a> e acconsento al trattamento dei miei dati personali da parte di Conero Surf Club per le finalità associative descritte.</label>
+            <span class="gdpr-mandatory">(Obbligatorio)</span>
+          </div>
+        </div>
+        
+        <div class="gdpr-btn-wrapper">
+          <button class="gdpr-btn" id="gdprBtn" onclick="openModulo()" disabled>Apri il Modulo di Iscrizione →</button>
+          <div class="gdpr-btn-hint">Spunta la casella sopra per abilitare il pulsante</div>
+        </div>
+      </div>
+      
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">Domande Frequenti</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Come posso diventare socio?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Per diventare socio, scarica il modulo di iscrizione nella sezione "Documenti pubblici" e invialo per email. Ti contatteremo per completare la procedura e fornirti tutte le informazioni necessarie.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Quali sono i costi di adesione?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Contattaci per ricevere informazioni dettagliate sulla quota associativa e le modalità di versamento.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Quali sono gli eventi in programma?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Visita la sezione "Eventi" per scoprire tutte le attività in programma. Se hai un'idea per un evento, contattaci!</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Come posso proporre un evento?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Se sei socio e hai un'idea per un evento, puoi contattarci tramite la sezione "Contatti" o inviare una mail a <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a> con i dettagli della tua proposta.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Quali sono i vostri principi?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Il Conero Surf Club si fonda su 5 principi: tutela del territorio, promozione della cultura marina, inclusione comunitaria, sicurezza e formazione, e preservazione della tradizione del surf. Scopri di più nella sezione "Manifesto".</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Come gestite i miei dati personali?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Tutti i dati personali raccolti tramite il modulo di iscrizione sono trattati in piena conformità al <strong>GDPR</strong> (Regolamento Generale sulla Protezione dei Dati). I tuoi dati sono utilizzati esclusivamente per l'iscrizione e la gestione dell'associazione. Non li condivideremo con terzi senza il tuo consenso. Puoi richiedere accesso, modifica o cancellazione dei tuoi dati in qualsiasi momento.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Quali campi sono obbligatori nel modulo?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-ans">
+              <p>Il modulo di iscrizione contiene campi marcati con <span class="required-marker">*</span> che sono obbligatori e necessari per elaborare la tua richiesta di adesione al Conero Surf Club. Questi includono informazioni personali essenziali come nome, cognome, email e data di nascita. Tutti gli altri campi sono opzionali.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- CONTATTI -->
+<div id="contatti">
+  <div class="s">
+    <span class="label">Restziamo in contatto</span>
+    <h2 class="big-title">Contatti</h2>
+    
+    <div class="contatti-grid">
+      <div class="contatti-card">
+        <h3>Vorresti avere maggiori informazioni sulle nostre attività?</h3>
+        <p><a href="mailto:conerosurfclub@gmail.com">Scrivici</a></p>
+      </div>
+      
+      <div class="contatti-card">
+        <h3>Vorresti organizzare un evento?</h3>
+        <p><a href="mailto:conerosurfclub@gmail.com">Contattaci</a></p>
+      </div>
+      
+      <div class="contatti-card">
+        <h3>Vorresti tesserarti e diventare un socio attivo?</h3>
+        <p><a href="#doc-faq">Scopri come</a></p>
+      </div>
+    </div>
+    
+    <div class="contatti-info">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a></div>
+        </div>
+        <div>
+          <div class="info-label">Instagram</div>
+          <div class="info-value"><a href="https://www.instagram.com/conerosurfclub" target="_blank">@conerosurfclub</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-col">
+    <div class="f-name">Conero Surf Club</div>
+    <div class="f-col-title">Associazione</div>
+    <p class="f-desc">Un'associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del Surf.</p>
+    <div class="f-code"><strong>Codice Fiscale:</strong> 93174580428</div>
+  </div>
+  
+  <div class="f-col">
+    <div class="f-col-title">Link Rapidi</div>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#manifesto">Manifesto</a>
+    <a href="#eventi">Eventi</a>
+  </div>
+  
+  <div class="f-col">
+    <div class="f-code" style="margin-top:0"><strong>IBAN:</strong><br>IT60X0542811010000001234456</div>
+  </div>
+  
+  <div class="f-col">
+    <div class="f-col-title">Seguici</div>
+    <a href="https://www.instagram.com/conerosurfclub" target="_blank">
+      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+      Instagram
+    </a>
+    <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a>
+  </div>
+  
+  <div class="f-bottom">
+    <p>© 2026 Conero Surf Club. Tutti i diritti riservati.</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+// mobile menu
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+
+// GDPR checkbox
+function toggleGdprBtn(){
+  const checkbox=document.getElementById('gdprCheckbox');
+  const btn=document.getElementById('gdprBtn');
+  btn.disabled=!checkbox.checked;
+}
+
+// Apri modulo
+function openModulo(){
+  window.open('https://docs.google.com/document/d/1O8lUMKJGP_DEfvLWDrI_W6pxz_-CFm3r/edit?pli=1','_blank');
+}
+
+// faq
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling,icon=btn.querySelector('.faq-icon'),open=ans.classList.contains('open');
+  document.querySelectorAll('.faq-ans.open').forEach(el=>{
+    el.classList.remove('open');
+    el.previousElementSibling.querySelector('.faq-icon').textContent='+';
+  });
+  if(!open){ans.classList.add('open');icon.textContent='−'}
+}
+
+// lightbox
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('active')}
+function closeLb(){document.getElementById('lb').classList.remove('active')}
+
+// active nav on scroll
+const sections=['home','chi-siamo','manifesto','eventi','doc-faq','contatti'];
+const navLinks=document.querySelectorAll('.nav-bar a[data-s]');
+const navH=document.getElementById('mainNav').offsetHeight+10;
+
+function onScroll(){
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=navH+40){current=id}
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.dataset.s===current);
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
