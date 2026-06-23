@@ -95,17 +95,21 @@ nav{
   position:relative;height:100vh;min-height:700px;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
-  margin-top:152px;
+  margin-top:125px;
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(13,13,13,0.4),rgba(13,13,13,0.6)),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="wave" x="0" y="0" width="200" height="100" patternUnits="userSpaceOnUse"><path d="M0,50 Q50,20 100,50 T200,50" fill="none" stroke="rgba(100,200,232,0.1)" stroke-width="2"/></pattern></defs><rect width="1200" height="800" fill="%230d0d0d"/><rect width="1200" height="800" fill="url(%23wave)"/></svg>');
-  background-size:cover;background-position:center;
   z-index:1;
+}
+/* Configurazione per fare in modo che l'aria del tag img copra tutta la sezione */
+.hero-bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 .hero-overlay{
   position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(100,200,232,0.02),rgba(13,13,13,0.5));
+  background:linear-gradient(135deg,rgba(13,13,13,0.5),rgba(13,13,13,0.7)), radial-gradient(ellipse at center,rgba(100,200,232,0.02),rgba(13,13,13,0.5));
   z-index:2;
 }
 .hero-content{
@@ -435,14 +439,15 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
 /* ─── FOOTER ─── */
 footer{background:#0a0f0f;border-top:1px solid var(--border);padding:60px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:60px}
 footer .f-col{display:flex;flex-direction:column;gap:20px}
-footer .f-col-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
-footer .f-name{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:0.06em;color:var(--white);margin-bottom:12px}
-footer .f-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,0.48);line-height:1.7}
-footer .f-code{font-size:12px;font-weight:300;color:rgba(255,255,255,0.6);margin-top:20px}
+footer .f-logo { height: 60px; width: auto; margin-bottom: 8px; opacity: 0.92; align-self: flex-start; }
+footer .f-col-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+footer .f-name{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--white);margin-bottom:12px}
+footer .f-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.7}
+footer .f-code{font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);margin-top:20px}
 footer .f-code strong{color:var(--white);font-weight:500}
-footer a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:300;transition:color 0.2s}
+footer a{color:var(--accent);text-decoration:none;font-size:15px;font-weight:300;transition:color 0.2s}
 footer a:hover{color:var(--white)}
-footer .ig-icon{display:inline-block;width:20px;height:20px}
+footer .ig-icon, footer .fb-icon {display:inline-block;width:24px;height:24px; vertical-align: middle; margin-right: 4px;}
 footer .f-bottom{grid-column:1/-1;border-top:1px solid var(--border);padding-top:32px;text-align:center}
 footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 
@@ -485,7 +490,6 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav id="mainNav">
   <div class="nav-top">
     <a href="#home" class="nav-logo">
@@ -517,19 +521,21 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   </div>
 </nav>
 
-<!-- HERO HOME -->
 <section id="home">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <img src="img/conero_surf_club_portonovo_molo.jpeg" alt="">
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-est">Riviera del Conero · Est. 2026</p>
+    
     <h1 class="hero-title">Conero<br>Surf<br>Club</h1>
+    
     <p class="hero-sub">RIDE.LIVE.PROTECT.SHARE</p>
     <div class="hero-line"></div>
   </div>
 </section>
 
-<!-- CHI SIAMO -->
 <div id="chi-siamo">
   <div class="s">
     <span class="label">La nostra storia</span>
@@ -540,7 +546,7 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
         <div class="subsection">
           <h3>La Nostra Identità</h3>
           <p>Il Conero Surf Club è un'associazione culturale e sociale nata dalla passione per il mare e dalla volontà di creare uno spazio dove la comunità possa condividere valori di rispetto, sostenibilità e consapevolezza ambientale.</p>
-          <p style="margin-top:16px">Non siamo un'associazione sportiva dilettantistica. Il nostro obiettivo è puramente sociale e culturale: vogliamo valorizzare il territorio del Conero, preservare la memoria della tradizione del surf, promuovere la consapevolezza ambientale e costruire una comunità inclusiva e consapevole.</p>
+          <p style="margin-top:16px">Non siamo un'associazione sportiva dilettantistica. Il nostro obiettivo è puramente sociale e culturale: vogliamo valorizzare il territorio del Conero, preservare la memoria della traditione del surf, promuovere la consapevolezza ambientale e costruire una comunità inclusiva e consapevole.</p>
         </div>
       </div>
       
@@ -555,11 +561,9 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </div>
 <hr class="sep">
 
-<!-- IMG BREAK -->
 <div class="img-break" style="background-image: linear-gradient(135deg, rgba(13,13,13,0.3), rgba(13,13,13,0.5)), url('img/conero_surf_club_membri_comunita.JPG');">
 </div>
 
-<!-- MANIFESTO -->
 <div id="manifesto">
   <div class="s">
     <span class="label">I nostri principi</span>
@@ -595,7 +599,6 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </div>
 <hr class="sep">
 
-<!-- EVENTI -->
 <div id="eventi">
   <div class="s">
     <span class="label">Partecipa</span>
@@ -617,21 +620,19 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </div>
 <hr class="sep">
 
-<!-- DOCUMENTI & FAQ -->
 <div id="doc-faq">
   <div class="s">
     <span class="label">Informazioni</span>
     <h2 class="big-title">Documenti<br>& FAQ</h2>
     
     <div class="doc-faq-container">
-      <!-- DOCUMENTI -->
       <div class="doc-section">
         <h3>Documenti</h3>
         <p>Accedi ai nostri documenti pubblici e moduli di iscrizione:</p>
         
         <div class="gdpr-notice">
           <h4>Trattamento dei dati personali (GDPR):</h4>
-          <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679. Il modulo è gestito tramite Google Forms.</p>
+          <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679.</p>
           <p><a href="#">Leggi l'informativa completa sulla Privacy →</a></p>
         </div>
         
@@ -649,7 +650,6 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
         </div>
       </div>
       
-      <!-- FAQ -->
       <div class="faq-section">
         <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">Domande Frequenti</h3>
         <div class="faq-list">
@@ -729,10 +729,9 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </div>
 <hr class="sep">
 
-<!-- CONTATTI -->
 <div id="contatti">
   <div class="s">
-    <span class="label">Restziamo in contatto</span>
+    <span class="label">Restiamo in contatto</span>
     <h2 class="big-title">Contatti</h2>
     
     <div class="contatti-grid">
@@ -768,9 +767,9 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 </div>
 <hr class="sep">
 
-<!-- FOOTER -->
 <footer>
   <div class="f-col">
+    <img src="img/conero_surf club_logo.jpg" alt="Conero Surf Club Logo" class="f-logo">
     <div class="f-name">Conero Surf Club</div>
     <div class="f-col-title">Associazione</div>
     <p class="f-desc">Un'associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del Surf.</p>
@@ -790,19 +789,21 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   
   <div class="f-col">
     <div class="f-col-title">Seguici</div>
+    
     <a href="https://www.instagram.com/conerosurfclub" target="_blank">
       <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
       Instagram
     </a>
+    
+    <a href="https://www.facebook.com/profile.php?id=61576506789524" target="_blank">
+      <svg class="fb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M15 11h-2v7h-3v-7H8V8h2V6a3 3 0 0 1 3-3h2v3h-1a1 1 0 0 0-1 1v1h2z"></path></svg>
+      Facebook
+    </a>
+    
     <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a>
-  </div>
-  
-  <div class="f-bottom">
-    <p>© 2026 Conero Surf Club. Tutti i diritti riservati.</p>
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lb" onclick="closeLb()">
   <button class="lb-close" onclick="closeLb()">✕</button>
   <img id="lb-img" src="" alt="">
