@@ -113,7 +113,6 @@ nav{
   width: 100%;
   height: 100%;
   object-fit: cover; 
-  object-position: 70% 50%; 
 }
 .hero-overlay{
   position:absolute;
@@ -275,27 +274,78 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
 
 /* ── GALLERY ── */
 
-.gallery-mosaic{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:3px}
-.g-item{overflow:hidden;position:relative;cursor:pointer}
-.g-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(0.75);transition:filter 0.5s,transform 0.6s;display:block}
-.g-item:hover img{filter:grayscale(50%) brightness(0.9);transform:scale(1.03)}
-.g-item:nth-child(1){grid-row:span 2;min-height:600px}
+.gallery-mosaic{
+display:grid;
+grid-template-columns:1fr;
+max-width: 100%; /* Assicura che non sia troppo grande */
+gap:3px
+}
+
+.g-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10; /* Regola il rapporto se serve diverso */
+    overflow: hidden;
+}
+.g-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Riempe il container mantenendo proporzioni */
+  /*  filter: grayscale(100%);*/
+    transition: filter 0.3s ease;
+}
+
+.g-item img{width:100%;height:100%;object-fit:cover;
+ /* filter:grayscale(100%) brightness(0.75); */
+  transition:filter 0.5s,transform 0.6s;
+  display:block}
+.g-item:hover img {
+  /*  filter: grayscale(50%) brightness(0.9); */
+    transform: scale(1.03);
+
+}.g-item:nth-child(1){grid-row:span 2;min-height:231px}
 .g-item:nth-child(2){min-height:295px}
 .g-item:nth-child(3){min-height:295px}
-.g-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:24px}
-.g-item:hover .g-overlay{opacity:1}
-.g-overlay span{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
 
-/* Forza in bianco e nero tutte le immagini della gallery, sia normalmente che al click/hover */
+.g-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; 
+}
+
+.g-item:hover .g-overlay {
+    opacity: 1;
+}
+
+.g-overlay span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #2c2c2c;
+    cursor: pointer;
+    pointer-events: auto; 
+}
+
+/* Forza in bianco e nero tutte le immagini della gallery, sia normalmente che al click/hover 
 .gallery-mosaic img, 
 .g-item img,
 [id^="gallery"] img {
     filter: grayscale(100%) !important;
-    transition: filter 0.3s ease; /* Opzionale: rende eventuali transizioni fluide */
+    transition: filter 0.3s ease;
 }
 .lightbox img, .lightbox-content {
     filter: grayscale(100%) !important;
 }
+/*
+
+
 /* ─── DOCUMENTI & FAQ ─── */
 .doc-faq-container{
   display:grid;grid-template-columns:1fr 1.2fr;gap:80px;
@@ -706,13 +756,13 @@ url('img/conero_surf_club_membri_comunita.JPG');">
      <h2 class="big-title">Gallery</h2>
   </div>
   </div>
-<div class="gallery-mosaic">   
-    <img src="img/2_conero_surf_vela.jpeg" alt=" class="g-item">
-    
-    <div class="g-overlay">
-        <span>Visualizza</span>
-    </div>  
-</div>
+  <div class="gallery-mosaic">   
+    <div class="g-item">
+        <img src="img/2_conero_surf_vela.jpeg" alt="Conero surf vela">
+        <div class="g-overlay">
+            <span onclick="openLb('img/2_conero_surf_vela.jpeg')">Visualizza</span>
+        </div>
+    </div>
   </div>
 </div>
 <hr class="sep">
@@ -839,7 +889,7 @@ url('img/conero_surf_club_membri_comunita.JPG');">
         <div class="iban-label">Intestato a</div>
         <div class="iban-value">CONERO SURF CLUB</div>
         <div class="iban-label" style="margin-top:20px">IBAN</div>
-        <div class="iban-value" style="font-size:clamp(15px,2.2vw,22px)">IT60 X054 2811 1010 0000 0123 456</div>
+        <div class="iban-value" style="font-size:clamp(15px,2.2vw,22px)">IT 91Z 062 300 268 500 003 088 1350</div>
         <div class="iban-note">Bonifico bancario · Causale: Donazione Conero Surf Club</div>
       </div>
     </div>
@@ -903,7 +953,7 @@ url('img/conero_surf_club_membri_comunita.JPG');">
   </div>
   
   <div class="f-col">
-    <div class="f-code" style="margin-top:0"><strong>IBAN:</strong><br>IT60X0542811010000001234456</div>
+    <div class="f-code" style="margin-top:0"><strong>IBAN:</strong><br>IT 91Z 062 300 268 500 003 088 1350</div>
   </div>
   
   <div class="f-col">
