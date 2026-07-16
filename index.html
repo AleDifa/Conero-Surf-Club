@@ -276,7 +276,7 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
 
 .gallery-mosaic{
 display:grid;
-grid-template-columns:1fr;
+grid-template-columns:1fr 1fr;
 max-width: 100%; /* Assicura che non sia troppo grande */
 gap:3px
 }
@@ -303,9 +303,10 @@ gap:3px
   /*  filter: grayscale(50%) brightness(0.9); */
     transform: scale(1.03);
 
-}.g-item:nth-child(1){grid-row:span 2;min-height:231px}
+}
+
+.g-item:nth-child(1){min-height:295px}
 .g-item:nth-child(2){min-height:295px}
-.g-item:nth-child(3){min-height:295px}
 
 .g-overlay {
     position: absolute;
@@ -325,7 +326,7 @@ gap:3px
 
 .g-overlay span {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
+    font-size: 23px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #2c2c2c;
@@ -761,6 +762,12 @@ url('img/conero_surf_club_membri_comunita.JPG');">
         <img src="img/2_conero_surf_vela.jpeg" alt="Conero surf vela">
         <div class="g-overlay">
             <span onclick="openLb('img/2_conero_surf_vela.jpeg')">Visualizza</span>
+        </div>
+    </div>
+    <div class="g-item">
+        <img src="img/conero_surf_club_portonovo_molo.jpeg" alt="Descrizione seconda immagine">
+        <div class="g-overlay">
+            <span onclick="openLb('img/conero_surf_club_portonovo_molo.jpeg')">Visualizza</span>
         </div>
     </div>
   </div>
