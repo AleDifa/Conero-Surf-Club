@@ -615,6 +615,32 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   }
 }
 
+.eventi-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 44px;
+  flex-wrap: wrap; /* per sicurezza su schermi piccoli */
+}
+
+.eventi-img {
+  width: 148px;
+  height: 203px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.eventi-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap; /* per sicurezza su schermi piccoli */
+}
+
 
 
 </style>
@@ -738,12 +764,27 @@ url('img/conero_surf_club_membri_comunita.JPG');">
     <h2 class="big-title">Eventi</h2>
     
     <div class="eventi-content">
-      <p>Per rimanere sempre aggiornato sugli eventi, segui la nostra pagina Instagram:</p>
-      <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
-        @conerosurfclub
-      </a>
+  <p>Per rimanere sempre aggiornato sugli eventi, segui la nostra pagina Instagram:</p>
+  <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+    @conerosurfclub
+  </a>
+
+<div class="eventi-gallery">
+  <div class="eventi-item" onclick="openLb('img/evento_due_spiaggina.jpeg')">
+    <img src="img/evento_due_spiaggina.jpeg" alt="Evento 1" class="eventi-img">
+    <div class="g-overlay">
+      <span>Visualizza</span>
     </div>
+  </div>
+
+  <div class="eventi-item" onclick="openLb('img/evento_uno_film.jpeg')">
+    <img src="img/evento_uno_film.jpeg" alt="Evento 2" class="eventi-img">
+    <div class="g-overlay">
+      <span>Visualizza</span>
+    </div>
+  </div>
+</div>
     
     <div class="eventi-prop">
       <h3>Vuoi Proporre un Evento?</h3>
@@ -791,7 +832,7 @@ url('img/conero_surf_club_membri_comunita.JPG');">
         <div class="gdpr-notice">
           <h4>Trattamento dei dati personali (GDPR):</h4>
           <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679.</p>
-          <p><a href="#">Leggi l'informativa completa sulla Privacy →</a></p>       
+          <p><a href="privacy-policy.html">Leggi l'informativa completa sulla Privacy →</a></p>       
         </div>
         
         <div class="gdpr-checkbox-container">
@@ -1003,7 +1044,7 @@ function toggleGdprBtn(){
 
 // Apri modulo
 function openModulo(){
-  window.open('https://docs.google.com/document/d/1O8lUMKJGP_DEfvLWDrI_W6pxz_-CFm3r/edit?pli=1','_blank');
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLSdm-NXuq1mlJ0FLHdFh9Bxd5BHH6Xv7IJCC7TCfzRU5RWMJ6w/viewform','_blank');
 }
 
 // faq
