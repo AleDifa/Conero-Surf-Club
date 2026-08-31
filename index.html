@@ -419,15 +419,21 @@ gap:3px
 }
 
 /* Bottone Iscrizione */
-.gdpr-btn-wrapper{
-  text-align:center;
+.gdpr-btn-wrapper {
+  display: flex;
+  flex-direction: column; /* Dispone il bottone e la scritta uno sotto l'altro */
+  justify-content: center; /* Centra orizzontalmente */
+  align-content: center;   /* Centra verticalmente */
+  align-items: center;     /* Centra gli elementi interni verticalmente */
+  min-height: 100%;        /* Occupa tutta l'altezza del contenitore padre */
 }
+
 .gdpr-btn{
   display:inline-block;
   background:linear-gradient(135deg,#9b7ec4,#7d6ba6);
   color:#fff;
   font-family:'Barlow Condensed',sans-serif;
-  font-size:14px;font-weight:700;
+  font-size:22px;font-weight:700;
   letter-spacing:0.12em;
   text-transform:uppercase;
   padding:16px 48px;
@@ -450,6 +456,7 @@ gap:3px
   box-shadow:none;
 }
 .gdpr-btn-hint{
+  text-align: center;     
   font-size:12px;font-weight:300;
   color:#999;
   margin-top:12px;
@@ -666,7 +673,8 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
     <a href="#manifesto"  data-s="manifesto">Manifesto</a>
     <a href="#eventi"     data-s="eventi">Eventi</a>
     <a href="#gallery"    data-s="gallery">Gallery</a>
-    <a href="#doc-faq"    data-s="doc-faq">Documenti & FAQ</a>
+    <a href="#doc-faq"    data-s="doc-faq">Tesseramento</a>
+    <a href="#faq"        data-s="faq">FAQ</a>
     <a href="#donazioni"  data-s="donazioni">Donazioni</a>
     <a href="#contatti"   data-s="contatti">Contatti</a>
   </div>
@@ -676,7 +684,8 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
     <a href="#manifesto"  onclick="closeMenu()">Manifesto</a>
     <a href="#eventi"     onclick="closeMenu()">Eventi</a>
     <a href="#gallery"    onclick="closeMenu()">Gallery</a>
-    <a href="#doc-faq"    onclick="closeMenu()">Documenti & FAQ</a>
+    <a href="#doc-faq"    onclick="closeMenu()">Tesseramento</a>
+    <a href="#faq"        onclick="closeMenu()">FAQ</a>
     <a href="#donazioni"  onclick="closeMenu()">Donazioni</a>    
     <a href="#contatti"   onclick="closeMenu()">Contatti</a>
   </div>
@@ -817,118 +826,139 @@ url('img/conero_surf_club_membri_comunita.JPG');">
     </div>
   </div>
 </div>
+
 <hr class="sep">
 
+
+<div class="s">
 <div id="doc-faq">
-  <div class="s">
-    <span class="label">Informazioni</span>
-    <h2 class="big-title">Documenti<br>& FAQ</h2>
-    
+
+    <h2 class="big-title">Tesseramento</h2>
+
     <div class="doc-faq-container">
       <div class="doc-section">
-        <h3>Documenti</h3>
+        <h3>Iscrizione</h3>
         <p>Accedi ai nostri documenti pubblici e moduli di iscrizione:</p>
-        
+
         <div class="gdpr-notice">
           <h4>Trattamento dei dati personali (GDPR):</h4>
-          <p>I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Conero Surf Club</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679.</p>
-          <p><a href="privacy-policy.html">Leggi l'informativa completa sulla Privacy →</a></p>       
+          <p>
+            I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno 
+            trattati da <strong>Conero Surf Club</strong> esclusivamente per la 
+            gestione del rapporto associativo, in conformità al Reg. UE 2016/679.
+          </p>
+          <p>
+            <a href="privacy-policy.html">Leggi l'informativa completa sulla Privacy →</a>
+          </p>
         </div>
-        
-        <div class="gdpr-checkbox-container">
-  <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()"> 
-  <div>
-    <label for="gdprCheckbox" class="gdpr-checkbox-label">
-      Ho letto l'<a href="privacy-policy.html" target="_blank">informativa privacy</a> e comprendo che i miei dati saranno trattati da Conero Surf Club per la gestione della domanda di ammissione a socio.
-    </label>
-    <span class="gdpr-mandatory">(Obbligatorio)</span>
-  </div>
-</div>
-<hr class="sep">       
 
-        <div class="gdpr-btn-wrapper">
-          <button class="gdpr-btn" id="gdprBtn" onclick="openModulo()" disabled>Apri il Modulo di Iscrizione →</button>
-          <div class="gdpr-btn-hint">Spunta la casella sopra per abilitare il pulsante</div>
+        <div class="gdpr-checkbox-container">
+          <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()">
+          <div>
+            <label for="gdprCheckbox" class="gdpr-checkbox-label">
+              Ho letto l'<a href="privacy-policy.html" target="_blank">informativa privacy</a> 
+              e comprendo che i miei dati saranno trattati da Conero Surf Club per la 
+              gestione della domanda di ammissione a socio.
+            </label>
+            <span class="gdpr-mandatory">(Obbligatorio)</span>
+          </div>
         </div>
       </div>
+      <div class="gdpr-btn-wrapper">
+    <button class="gdpr-btn" id="gdprBtn" onclick="openModulo()" disabled>Apri il Modulo di Iscrizione ↓</button>
+    <div class="gdpr-btn-hint">Spunta la casella dell'informativa privacy per abilitare il pulsante</div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>     
+</div>
       
-      <div class="faq-section">
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">Domande Frequenti</h3>
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Come posso diventare socio?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Per diventare socio, puoi compilare il modulo di iscrizione online cliccando sull'apposito bottone "Apri il modulo di iscrizione".</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Quali sono i costi di adesione?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Contattaci per ricevere informazioni dettagliate sulla quota associativa e le modalità di versamento.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Quali sono gli eventi in programma?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Visita la sezione "Eventi" per scoprire tutte le attività in programma. Se hai un'idea per un evento, contattaci!</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Come posso proporre un evento?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Se sei socio e hai un'idea per un evento, puoi contattarci tramite la sezione "Contatti" o inviare una mail a <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a> con i dettagli della tua proposta.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Quali sono i vostri principi?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Il Conero Surf Club si fonda su 5 principi: tutela del territorio, promozione della cultura marina, inclusione comunitaria, sicurezza e formazione, e preservazione della tradizione del surf. Scopri di più nella sezione "Manifesto".</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Come gestite i miei dati personali?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Tutti i dati personali raccolti tramite il modulo di iscrizione sono trattati in piena conformità al <strong>GDPR</strong> (Regolamento Generale sulla Protezione dei Dati). I tuoi dati sono utilizzati esclusivamente per l'iscrizione e la gestione dell'associazione. Non li condivideremo con terzi senza il tuo consenso. Puoi richiedere accesso, modifica o cancellazione dei tuoi dati in qualsiasi momento.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Quali campi sono obbligatori nel modulo?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-ans">
-              <p>Il modulo di iscrizione contiene campi marcati con <span class="required-marker">*</span> che sono obbligatori e necessari per elaborare la tua richiesta di adesione al Conero Surf Club. Questi includono informazioni personali essenziali come nome, cognome, email e data di nascita. Tutti gli altri campi sono opzionali.</p>
-            </div>
-          </div>
-        </div>
+<hr class="sep">
+  <div id="faq">
+  <div class="s">
+  <div class="faq-section">
+    <h2 class="big-title">Domande Frequenti</h2>
+
+  <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">
+    FAQ
+  </h3>
+</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come posso diventare socio? 
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Per diventare socio, puoi compilare il modulo di iscrizione online cliccando sull'apposito bottone "Apri il modulo di iscrizione".</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono i costi di adesione?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Contattaci per ricevere informazioni dettagliate sulla quota associativa e le modalità di versamento.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono gli eventi in programma?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Visita la sezione "Eventi" per scoprire tutte le attività in programma. Se hai un'idea per un evento, contattaci!</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come posso proporre un evento?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Se sei socio e hai un'idea per un evento, puoi contattarci tramite la sezione "Contatti" o inviare una mail a <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a> con i dettagli della tua proposta.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono i vostri principi?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Il Conero Surf Club si fonda su 5 principi: tutela del territorio, promozione della cultura marina, inclusione comunitaria, sicurezza e formazione, e preservazione della tradizione del surf. Scopri di più nella sezione "Manifesto".</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come gestite i miei dati personali?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Tutti i dati personali raccolti tramite il modulo di iscrizione sono trattati in piena conformità al <strong>GDPR</strong> (Regolamento Generale sulla Protezione dei Dati). I tuoi dati sono utilizzati esclusivamente per l'iscrizione e la gestione dell'associazione. Non li condivideremo con terzi senza il tuo consenso. Puoi richiedere accesso, modifica o cancellazione dei tuoi dati in qualsiasi momento.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali campi sono obbligatori nel modulo?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Il modulo di iscrizione contiene campi marcati con <span class="required-marker">*</span> che sono obbligatori e necessari per elaborare la tua richiesta di adesione al Conero Surf Club. Questi includono informazioni personali essenziali come nome, cognome, email e data di nascita. Tutti gli altri campi sono opzionali.</p>
       </div>
     </div>
   </div>
 </div>
+</div>
+</div>
+
 <hr class="sep">
 
 <div id="donazioni">
