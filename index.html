@@ -155,7 +155,7 @@
 
 <div id="blog">
   <div class="s">
-    <span class="label">News e Aggiornamenti</span>
+    <span class="label">Articoli</span>
     <h2 class="big-title">Blog</h2>
     
     <div class="blog-list">
@@ -169,15 +169,14 @@
     </div>
 </div>
 
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleBlog(this)">
-          Storia del surf nella Riviera del Conero
-          <span class="blog-icon" style="font-weight:bold;">&gt;</span>
-        </button>
-        <div class="faq-ans">
-          <p>Un viaggio indietro nel tempo per riscoprire le origini del surf sulle nostre coste. Aneddoti, prime tavole in mare e l'evoluzione di una comunità unita dalla stessa passione.</p>
-        </div>
-      </div>
+          <div class="faq-item">
+  <button class="faq-btn" onclick="toggleBlogDinamico(this, 'storia-surf-conero.html')">
+    Storia del Surf nella riviera del Conero
+    <span class="blog-icon" style="font-weight:bold;">&gt;</span>
+  </button>
+  <div class="faq-ans">
+    </div>
+</div>
 
     </div>
   </div>
@@ -464,33 +463,11 @@ function toggleFaq(btn){
   if(!open){ans.classList.add('open');icon.textContent='−'}
 }
 
-// blog toggle (accordion)
-function toggleBlog(btn){
-  const ans=btn.nextElementSibling;
-  const icon=btn.querySelector('.blog-icon');
-  const open=ans.classList.contains('open');
-  
-  // (Opzionale) chiude gli altri articoli aperti per avere un layout più pulito
-  /* document.querySelectorAll('#blog .faq-ans.open').forEach(el=>{
-    el.classList.remove('open');
-    el.previousElementSibling.querySelector('.blog-icon').textContent='>';
-  }); */
-
-  if(!open) {
-    ans.classList.add('open');
-    icon.innerHTML='v';
-  } else {
-    ans.classList.remove('open');
-    icon.innerHTML='&gt;';
-  }
-}
-
 // lightbox
 function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('active')}
 function closeLb(){document.getElementById('lb').classList.remove('active')}
 
 // active nav on scroll
-// Aggiornato l'array per includere "blog" (tolto faq come da indicazioni per il menu in alto)
 const sections=['home','chi-siamo','manifesto','eventi','blog','gallery','doc-faq','contatti'];
 const navLinks=document.querySelectorAll('.nav-bar a[data-s]');
 const navH=document.getElementById('mainNav').offsetHeight+10;
@@ -508,13 +485,27 @@ function onScroll(){
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 
+// blog toggle dinamico (chiude il precedente e apre quello cliccato)
 function toggleBlogDinamico(btn, fileUrl) {
   const ans = btn.nextElementSibling;
   const icon = btn.querySelector('.blog-icon');
-  const open = ans.classList.contains('open');
+  const isOpen = ans.classList.contains('open');
 
-  if (!open) {
-    // Carica il contenuto dal file HTML esterno solo la prima volta
+  // 1. Chiude SEMPRE tutti gli altri articoli aperti prima di proseguire
+  document.querySelectorAll('#blog .faq-ans.open').forEach(el => {
+    if (el !== ans) {
+      el.classList.remove('open');
+      const prevIcon = el.previousElementSibling ? el.previousElementSibling.querySelector('.blog-icon') : null;
+      if (prevIcon) prevIcon.innerHTML = '&gt;';
+    }
+  });
+
+  // 2. Se quello cliccato era già aperto, lo chiude
+  if (isOpen) {
+    ans.classList.remove('open');
+    icon.innerHTML = '&gt;';
+  } else {
+    // 3. Se era chiuso, lo apre e carica il file
     if (!ans.dataset.loaded) {
       ans.innerHTML = "<p>Caricamento in corso...</p>";
       fetch(fileUrl)
@@ -532,9 +523,6 @@ function toggleBlogDinamico(btn, fileUrl) {
     }
     ans.classList.add('open');
     icon.innerHTML = 'v';
-  } else {
-    ans.classList.remove('open');
-    icon.innerHTML = '&gt;';
   }
 }
 </script>
