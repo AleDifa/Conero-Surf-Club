@@ -22,11 +22,13 @@ body{
   justify-content: center; 
   text-align: center; 
   font-weight: bold;
-  border: 2px solid currentColor; 
+  border: 2px solid #00aaff !important;
   border-radius: 20px; 
   padding: 4px 12px; 
   margin-left: 10px;
 }
+
+
 
 /* ─── NAV ─── */
 nav{
@@ -88,11 +90,19 @@ nav{
 /* mobile */
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white)}
-.mobile-menu{display:none;flex-direction:column;background:#0b0b0b;border-top:1px solid var(--border);padding:8px 0}
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #0b0b0b;
+  border-top: 1px solid var(--border);
+}
+
 .mobile-menu a{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;padding:15px 28px;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;display:block}
 .mobile-menu a:hover{color:var(--white)}
 .mobile-menu a.cta{color:var(--accent)}
-.mobile-menu.open{display:flex}
+.mobile-menu.open {
+  display: flex;
+}
 
 /* ─── HERO ─── */
 #home{
@@ -603,44 +613,6 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
 .lb-close{position:absolute;top:26px;right:32px;font-size:30px;color:rgba(255,255,255,0.35);cursor:pointer;background:none;border:none;transition:color 0.2s;font-family:'Barlow',sans-serif}
 .lb-close:hover{color:var(--white)}
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:1080px){.nav-bar a{padding:14px 16px;font-size:12px}}
-@media(max-width:860px){
-  .nav-bar{display:none}.hamburger{display:flex}
-  .s{padding:60px 24px}
-  .chi-layout{grid-template-columns:1fr;gap:44px}
-  .doc-faq-container{grid-template-columns:1fr;gap:44px}
-  .contatti-grid{grid-template-columns:1fr;gap:30px}
-  .manifesto-grid{grid-template-columns:1fr}
-  .big-title{font-size:clamp(36px,8vw,60px)}
-  footer{grid-template-columns:1fr;gap:40px;padding:40px 24px}
-  .img-break{height:35vh;min-height:300px}
-  .img-break-caption{left:24px;bottom:24px}
-  .gdpr-checkbox-container{padding:20px 24px;margin-bottom:20px}
-  .gdpr-btn{padding:14px 40px;font-size:13px}
-}
-@media(max-width:600px){
-  .nav-top{padding:0 24px;height:64px}
-  .nav-logo img{height:44px}
-  .nav-logo-text{font-size:18px}
-  .s{padding:48px 20px}
-  #home{margin-top:128px;min-height:600px}
-  .hero-est{font-size:10px;margin-bottom:20px}
-  .hero-title{font-size:clamp(48px,10vw,80px);margin-bottom:16px}
-  .hero-sub{font-size:clamp(12px,1.8vw,16px);margin-bottom:20px}
-  .contatti-grid{grid-template-columns:1fr}
-  .hero-line{display:none}
-}
-
-/* Correzione per dispositivi mobile (smartphone) */
-@media (max-width: 768px) {
-  #home {
-    margin-top: 60px; 
-    height: 60vh;
-    min-height: 400px;
-  }
-}
-
 .eventi-gallery {
   display: flex;
   justify-content: center;
@@ -665,4 +637,140 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   gap: 16px;
   margin-top: 24px;
   flex-wrap: wrap; /* per sicurezza su schermi piccoli */
+}
+
+
+/* ─── DESKTOP BASE (sopra 860px) ─── */
+.nav-bar a.cta-donazioni {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #00aaff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-left: 10px;
+  color: #00aaff;
+}
+
+/* ─── RESPONSIVE COMPLETO E CORRETTO ─── */
+
+/* Desktop Stretto */
+@media (max-width: 1080px) {
+  .nav-bar a {
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Tablet & Mobile Menu Toggle (860px) */
+@media (max-width: 860px) {
+  .nav-bar {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+
+  /* Bottone DONAZIONI nel menu mobile */
+  a.cta-donazioni {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: fit-content !important;
+    margin: 4px 0 4px 4px !important; 
+    border: 1px solid #00aaff !important;
+    border-radius: 25px !important;
+    color: #00aaff !important;
+    font-weight: bold !important;
+    background-color: transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Layout di pagina per tablet */
+  .s {
+    padding: 60px 24px;
+  }
+  .chi-layout,
+  .doc-faq-container,
+  .contatti-grid,
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .big-title {
+    font-size: clamp(36px, 8vw, 60px);
+  }
+  footer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 24px;
+  }
+  .img-break {
+    height: 35vh;
+    min-height: 300px;
+  }
+  .img-break-caption {
+    left: 24px;
+    bottom: 24px;
+  }
+  .gdpr-checkbox-container {
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .gdpr-btn {
+    padding: 14px 40px;
+    font-size: 13px;
+  }
+}
+
+/* Smartphone Inserimento Hero (768px) */
+@media (max-width: 768px) {
+  #home {
+    margin-top: 60px;
+    height: 60vh;
+    min-height: 400px;
+  }
+}
+
+/* Smartphone Piccoli (600px) */
+@media (max-width: 600px) {
+  .nav-top {
+    padding: 0 24px;
+    height: 64px;
+  }
+  .nav-logo img {
+    height: 44px;
+  }
+  .nav-logo-text {
+    font-size: 18px;
+  }
+  .s {
+    padding: 48px 20px;
+  }
+  #home {
+    margin-top: 128px;
+    min-height: 600px;
+  }
+  .hero-est {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: clamp(48px, 10vw, 80px);
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: clamp(12px, 1.8vw, 16px);
+    margin-bottom: 20px;
+  }
+  .contatti-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-line {
+    display: none;
+  }
 }
