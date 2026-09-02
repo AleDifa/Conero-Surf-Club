@@ -16,6 +16,18 @@ body{
   overflow-x:hidden;
 }
 
+.nav-bar a.cta-donazioni {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  font-weight: bold;
+  border: 2px solid currentColor; 
+  border-radius: 20px; 
+  padding: 4px 12px; 
+  margin-left: 10px;
+}
+
 /* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;

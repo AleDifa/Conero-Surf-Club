@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conero Surf Club</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -28,9 +31,9 @@
     <a href="#eventi"     data-s="eventi">Eventi</a>
     <a href="#blog"       data-s="blog">Blog</a>
     <a href="#gallery"    data-s="gallery">Gallery</a>
-    <a href="#doc-faq"    data-s="doc-faq">Tesseramento</a>
+    <a href="#doc-faq"    data-s="doc-faq">Tesseramento & FAQ</a>
     <a href="#contatti"   data-s="contatti">Contatti</a>
-    <a href="#donazioni" class="cta-donazioni" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; border: 2px solid currentColor; border-radius: 20px; padding: 4px 12px; margin-left: 10px;">Donazioni</a>  </div>
+    <a href="#donazioni"  class="cta-donazioni">Donazioni</a> 
   
     <div class="mobile-menu" id="mobileMenu">
     <a href="#home"       onclick="closeMenu()">Home</a>
@@ -39,9 +42,9 @@
     <a href="#eventi"     onclick="closeMenu()">Eventi</a>
     <a href="#blog"       onclick="closeMenu()">Blog</a>
     <a href="#gallery"    onclick="closeMenu()">Gallery</a>
-    <a href="#doc-faq"    onclick="closeMenu()">Tesseramento</a>
+    <a href="#doc-faq"    onclick="closeMenu()">Tesseramento & FAQ</a>
     <a href="#contatti"   onclick="closeMenu()">Contatti</a>
-<a href="#donazioni" onclick="closeMenu()" style="display: inline-flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; border: 2px solid currentColor; border-radius: 20px; padding: 6px 16px; margin-top: 10px;">Donazioni</a>  </div>
+    <a href="#donazioni"  onclick="closeMenu()">Donazioni</a> 
 </nav>
 
 <section id="home">
@@ -221,7 +224,7 @@
           <h4>Trattamento dei dati personali (GDPR):</h4>
           <p>
             I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno 
-            trattati da <strong>Conero Surf Club</strong> esclusivamente per la 
+            trattati da Conero Surf Club esclusivamente per la 
             gestione del rapporto associativo, in conformità al Reg. UE 2016/679.
           </p>
           <p>
@@ -256,7 +259,7 @@
   <div class="faq-section">
     <h2 class="big-title">Domande Frequenti</h2>
 
-  <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">
+  <h3 style=font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">
     FAQ
   </h3>
 </div>
@@ -337,25 +340,6 @@
 
 <hr class="sep">
 
-<div id="donazioni">
-  <div class="s">
-    <span class="label">Sostienici</span>
-    <h2 class="big-title">Donazioni</h2>
-    <div class="don-box">
-      <p>Il Conero Surf Club è un'associazione no-profit che vive grazie alla passione dei suoi soci e al sostegno di chi crede nei valori del surf, della comunità e del rispetto per l'Adriatico. Le tue donazioni ci permettono di organizzare eventi, promuovere la sicurezza in mare e preservare il territorio del Conero.</p>
-      <div class="iban-block">
-        <div class="iban-label">Intestato a</div>
-        <div class="iban-value">CONERO SURF CLUB</div>
-        <div class="iban-label" style="margin-top:20px">IBAN</div>
-        <div class="iban-value" style="font-size:clamp(15px,2.2vw,22px)">IT 91Z 062 300 268 500 003 088 1350</div>
-        <div class="iban-note">Bonifico bancario · Causale: Donazione Conero Surf Club</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="sep">
-
 <div id="contatti">
   <div class="s">
     <span class="label">Restiamo in contatto</span>
@@ -393,7 +377,24 @@
   </div>
 </div>
 <hr class="sep">
+<div id="donazioni">
+  <div class="s">
+    <span class="label">Sostienici</span>
+    <h2 class="big-title">Donazioni</h2>
+    <div class="don-box">
+      <p>Il Conero Surf Club è un'associazione no-profit che vive grazie alla passione dei suoi soci e al sostegno di chi crede nei valori del surf, della comunità e del rispetto per l'Adriatico. Le tue donazioni ci permettono di organizzare eventi, promuovere la sicurezza in mare e preservare il territorio del Conero.</p>
+      <div class="iban-block">
+        <div class="iban-label">Intestato a</div>
+        <div class="iban-value">CONERO SURF CLUB</div>
+        <div class="iban-label" style="margin-top:20px">IBAN</div>
+        <div class="iban-value" style="font-size:clamp(15px,2.2vw,22px)">IT 91Z 062 300 268 500 003 088 1350</div>
+        <div class="iban-note">Bonifico bancario · Causale: Donazione Conero Surf Club</div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<hr class="sep">
 <footer>
   <div class="f-col">
     <img src="img/conero_surf_club_logo.png" alt="Conero Surf Club Logo" class="f-logo" loading="lazy">
