@@ -184,7 +184,7 @@ nav{
 
 
 /* ─── SECTIONS ─── */
-.s{max-width:1140px;margin:0 auto;padding:80px 60px}
+.container{max-width:1140px;margin:0 auto;padding:80px 60px}
 
 hr.sep{height:1px;background:var(--border);border:none;margin:0}
 .label{
@@ -261,11 +261,20 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
   color:rgba(255,255,255,0.68);margin-bottom:20px;
 }
 .ig-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  color:var(--accent);text-decoration:none;font-weight:500;
-  border:1px solid var(--accent);padding:10px 20px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:500;
+  border:1px solid var(--accent);
+  padding:10px 20px;
   transition:all 0.2s;
+  max-width:100%;
+  box-sizing:border-box;
+  flex-wrap:wrap;         /* permette di andare a capo se serve */
 }
+
 .ig-btn:hover{background:var(--accent);color:#000}
 .ig-btn svg{width:18px;height:18px}
 .eventi-prop{
@@ -273,6 +282,11 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
   border:1px solid rgba(100,200,232,0.1);
   padding:44px 40px;
   text-align:center;
+}
+.ig-btn span{
+    min-width:0;             /* <-- chiave: toglie il blocco di flexbox */
+  overflow-wrap:break-word;  /* permette di andare a capo se necessario */
+  word-break:break-word;
 }
 .eventi-prop h3{
   font-family:'Barlow Condensed',sans-serif;
@@ -592,19 +606,156 @@ gap:3px
 }
 
 /* ─── FOOTER ─── */
-footer{background:#0a0f0f;border-top:1px solid var(--border);padding:60px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:60px}
-footer .f-col{display:flex;flex-direction:column;gap:20px}
-footer .f-logo { height: 60px; width: auto; margin-bottom: 8px; opacity: 0.92; align-self: flex-start; }
-footer .f-col-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
-footer .f-name{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--white);margin-bottom:12px}
-footer .f-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.7}
-footer .f-code{font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);margin-top:20px}
-footer .f-code strong{color:var(--white);font-weight:500}
-footer a{color:var(--accent);text-decoration:none;font-size:15px;font-weight:300;transition:color 0.2s}
-footer a:hover{color:var(--white)}
-footer .ig-icon, footer .fb-icon {display:inline-block;width:24px;height:24px; vertical-align: middle; margin-right: 4px;}
-footer .f-bottom{grid-column:1/-1;border-top:1px solid var(--border);padding-top:32px;text-align:center}
-footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+}
+footer{
+  background:#000;
+  border-top:1px solid var(--border);
+}
+
+footer .footer-inner{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  grid-template-areas:
+    "brand   brand"
+    "left    right"
+    "divider divider"
+    "copy    copy";
+  column-gap:60px;
+  row-gap:40px;
+  padding-top:80px;
+  padding-bottom:60px;
+}
+
+footer .section-divider{
+  grid-area:divider;
+}
+
+/* ── Brand: logo + nome centrati sulla stessa riga ── */
+footer .f-brand{
+  grid-area:brand;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+}
+footer .f-logo{
+  height:44px;
+  width:auto;
+  opacity:0.92;
+}
+footer .f-name{
+  font-family:'Anton',sans-serif;
+  font-size:22px;
+  letter-spacing:0.06em;
+  color:var(--white);
+}
+
+/* ── Colonne ── */
+footer .f-left{
+  grid-area:left;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+footer .f-right{
+  grid-area:right;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:20px;
+}
+
+footer .f-col-title{
+  font-family:'Barlow',sans-serif;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+footer .f-desc{
+  font-size:15px;
+  font-weight:300;
+  color:rgba(255,255,255,0.55);
+  line-height:1.7;
+  max-width:520px;
+}
+
+/* ── Codice Fiscale e IBAN, uno sotto l'altro ── */
+footer .f-legal{
+  display:flex;
+  flex-direction:column;
+}
+
+footer .f-tail{
+  font-size:12px;
+  font-weight:300;
+  color:rgba(255,255,255,0.55);
+}
+
+footer .f-code{
+  font-size:13px;
+  font-weight:300;
+  color:rgba(255,255,255,0.55);
+}
+
+
+footer .f-code strong{
+  color:var(--white);
+  font-weight:500;
+}
+
+/* ── Riga finale: copyright a sinistra, credit a destra ── */
+footer .f-copy{
+  grid-area:copy;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top: -3%;
+  gap:8px 40px;
+  line-height:1.6;
+}
+footer .f-copy a{
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  text-decoration:none;
+}
+footer .f-copy a:hover{
+  color:var(--accent);
+}
+
+/* ── Link e icone social ── */
+footer a{
+  color:var(--accent);
+  font-size:15px;
+  font-weight:300;
+  text-decoration:none;
+  transition:color 0.2s;
+}
+footer a:hover{
+  color:var(--white);
+}
+footer .ig-icon,
+footer .fb-icon{
+  display:inline-block;
+  width:24px;
+  height:24px;
+  vertical-align:middle;
+  margin-right:4px;
+}
 
 /* ─── LIGHTBOX ─── */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:9999;align-items:center;justify-content:center}
@@ -654,9 +805,9 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   color: #00aaff;
 }
 
-/* ─── RESPONSIVE COMPLETO E CORRETTO ─── */
+/* ─── RESPONSIVO SEMPLIFICATO (Desktop + Solo Smartphone < 500px) ─── */
 
-/* Desktop Stretto */
+/* 1. Desktop Stretto (Opzionale, sotto i 1080px) */
 @media (max-width: 1080px) {
   .nav-bar a {
     padding: 14px 16px;
@@ -664,8 +815,9 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
   }
 }
 
-/* Tablet & Mobile Menu Toggle (860px) */
-@media (max-width: 860px) {
+
+@media (max-width: 500px) {
+
   .nav-bar {
     display: none !important;
   }
@@ -674,7 +826,19 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
     display: flex !important;
   }
 
-  /* Bottone DONAZIONI nel menu mobile */
+  .nav-top {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .nav-logo img {
+    height: 40px;
+  }
+
+  .nav-logo-text {
+    font-size: 16px;
+  }
+
   a.cta-donazioni {
     display: inline-flex !important;
     align-items: center !important;
@@ -690,87 +854,127 @@ footer .f-bottom p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3)}
     box-sizing: border-box !important;
   }
 
-  /* Layout di pagina per tablet */
-  .s {
-    padding: 60px 24px;
+  .container {
+    padding: 40px 16px;
   }
+
   .chi-layout,
   .doc-faq-container,
   .contatti-grid,
   .manifesto-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 32px;
   }
-  .big-title {
-    font-size: clamp(36px, 8vw, 60px);
-  }
-  footer {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 40px 24px;
-  }
-  .img-break {
-    height: 35vh;
-    min-height: 300px;
-  }
-  .img-break-caption {
-    left: 24px;
-    bottom: 24px;
-  }
-  .gdpr-checkbox-container {
-    padding: 20px 24px;
-    margin-bottom: 20px;
-  }
-  .gdpr-btn {
-    padding: 14px 40px;
-    font-size: 13px;
-  }
-}
 
-/* Smartphone Inserimento Hero (768px) */
-@media (max-width: 768px) {
+
   #home {
     margin-top: 60px;
-    height: 60vh;
-    min-height: 400px;
+    height: auto;
+    min-height: 450px;
   }
-}
 
-/* Smartphone Piccoli (600px) */
-@media (max-width: 600px) {
-  .nav-top {
-    padding: 0 24px;
-    height: 64px;
-  }
-  .nav-logo img {
-    height: 44px;
-  }
-  .nav-logo-text {
-    font-size: 18px;
-  }
-  .s {
-    padding: 48px 20px;
-  }
-  #home {
-    margin-top: 128px;
-    min-height: 600px;
-  }
   .hero-est {
     font-size: 10px;
-    margin-bottom: 20px;
-  }
-  .hero-title {
-    font-size: clamp(48px, 10vw, 80px);
     margin-bottom: 16px;
   }
+
+  .hero-title, .big-title {
+    font-size: clamp(36px, 9vw, 54px);
+    margin-bottom: 12px;
+  }
+
   .hero-sub {
-    font-size: clamp(12px, 1.8vw, 16px);
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin-bottom: 16px;
   }
-  .contatti-grid {
-    grid-template-columns: 1fr;
-  }
+
   .hero-line {
     display: none;
   }
+
+
+  .img-break {
+    height: 30vh;
+    min-height: 250px;
+  }
+  
+  .img-break-caption {
+    left: 16px;
+    bottom: 16px;
+  }
+
+
+  .gdpr-checkbox-container {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .gdpr-btn {
+    padding: 12px 24px;
+    font-size: 13px;
+    width: 100%; 
+  }
+
+  .ig-btn {
+    padding: 10px 14px;
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .eventi-content {
+    padding: 30px 16px;
+  }
+
+
+
+   /* FOOOTER */ 
+
+  footer .footer-inner{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "brand"
+      "left"
+      "right"
+      "divider"
+      "copy";;
+    row-gap:30px;
+    padding:40px 16px 30px;
+    max-width:100%;
+  }
+
+  /* logo sopra, nome sotto, centrati */
+  footer .f-brand{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  footer .f-left,
+  footer .f-right{
+    text-align:left;
+    align-items:flex-start;
+  }
+
+  footer .f-desc{
+    max-width:none;
+  }
+
+  /* Codice Fiscale e IBAN uno sotto l'altro */
+footer .f-legal{
+  margin-top:10px;
+}
+footer .f-copy{
+  margin-top:-10px;
+}
+
+  /* il credit non ha più bisogno di essere spinto in fondo */
+  footer .footer-credit{
+    margin-top:0;
+    padding-top:10px;
+  }
+    footer .f-tail{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:6px;
+}
 }

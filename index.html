@@ -5,9 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conero Surf Club</title>
 
+    <link rel="icon" type="image/x-icon" href="/img/conero_surf_club_logo.png">
+    <link rel="shortcut icon" href="/img/conero_surf_club_logo.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "Conero Surf Club",
+  "alternateName": "Conero Surf Club Associazione",
+  "description": "Associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del surf.",
+  "url": "https://www.conerosurfclub.it/",
+  "logo": "https://www.conerosurfclub.it/img/conero_surf_club_logo.png",
+  "image": "https://www.conerosurfclub.it/img/conero_surf_club_logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ancona",
+    "addressRegion": "Marche",
+    "addressCountry": "IT"
+  },
+  "areaServed": [
+    { "@type": "Place", "name": "Ancona" },
+    { "@type": "Place", "name": "Portonovo" },
+    { "@type": "Place", "name": "Conero" },
+    { "@type": "AdministrativeArea", "name": "Marche" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/conerosurfclub"
+  ]
+}
+</script>
+
+<!-- Stili -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="style.css">
+
+
+
+    
 </head>
 <body>
 
@@ -61,7 +98,7 @@
 </section>
 
 <div id="chi-siamo">
-  <div class="s">
+  <div class="container">
     <span class="label">La nostra storia</span>
     <h2 class="big-title">Chi<br>Siamo</h2>
     
@@ -86,7 +123,7 @@
 <hr class="sep">
 
 <div id="manifesto">
-  <div class="s">
+  <div class="container">
     <span class="label">I nostri principi</span>
     <h2 class="big-title">Manifesto</h2>
     
@@ -121,16 +158,16 @@
 <hr class="sep">
 
 <div id="eventi">
-  <div class="s">
+  <div class="container">
     <span class="label">Partecipa</span>
     <h2 class="big-title">Eventi</h2>
     
     <div class="eventi-content">
       <p>Per rimanere sempre aggiornato sugli eventi, segui la nostra pagina Instagram:</p>
-      <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
-        @conerosurfclub
-      </a>
+        <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          <span>@conerosurfclub</span>
+        </a>
 
       <div class="eventi-gallery">
         <div class="eventi-item" onclick="openLb('img/conero-surf-club-ancona-free-skate-evento.jpg')">
@@ -165,7 +202,7 @@
 <hr class="sep">
 
 <div id="blog">
-  <div class="s">
+  <div class="container">
     <span class="label">Articoli</span>
     <h2 class="big-title">Blog</h2>
     
@@ -207,7 +244,7 @@
 </div>
 <hr class="sep">
 <div id="gallery">
-  <div class="s">
+  <div class="container">
    <div class="gallery-header">
      <span class="label">Immagini dal mare</span>
      <h2 class="big-title">Gallery</h2>
@@ -231,7 +268,7 @@
 
 <hr class="sep">
 
-<div class="s">
+<div class="container">
 <div id="doc-faq">
 
     <h2 class="big-title">Tesseramento</h2>
@@ -276,7 +313,7 @@
 
 <hr class="sep">
   <div id="faq">
-  <div class="s">
+  <div class="container">
   <div class="faq-section">
     <h2 class="big-title">Domande Frequenti</h2>
 
@@ -362,7 +399,7 @@
 <hr class="sep">
 
 <div id="contatti">
-  <div class="s">
+  <div class="container">
     <span class="label">Restiamo in contatto</span>
     <h2 class="big-title">Contatti</h2>
     
@@ -399,7 +436,7 @@
 </div>
 <hr class="sep">
 <div id="donazioni">
-  <div class="s">
+  <div class="container">
     <span class="label">Sostienici</span>
     <h2 class="big-title">Donazioni</h2>
     <div class="don-box">
@@ -416,34 +453,48 @@
 </div>
 
 <hr class="sep">
+
 <footer>
-  <div class="f-col">
-    <img src="img/conero_surf_club_logo.png" alt="Conero Surf Club Logo" class="f-logo" loading="lazy">
-    <div class="f-name">Conero Surf Club</div>
-    <div class="f-col-title">Associazione</div>
-    <p class="f-desc">Un'associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del Surf.</p>
-    <div class="f-code"><strong>Codice Fiscale:</strong> 93174580428</div>
-  </div>
-  
-  
-  <div class="f-col">
-    <div class="f-code" style="margin-top:0"><strong>IBAN:</strong><br>IT 91Z 062 300 268 500 003 088 1350</div>
-  </div>
-  
-  <div class="f-col">
-    <div class="f-col-title">Seguici</div>
+  <div class="container footer-inner">
+
+    <div class="f-brand">
+      <img src="img/conero_surf_club_logo.png" alt="Conero Surf Club Logo" class="f-logo" loading="lazy">
+      <div class="f-name">Conero Surf Club</div>
+    </div>
+
+    <div class="f-left">
+      <div class="f-col-title">Associazione</div>
+      <p class="f-desc">Un'associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del Surf.</p>
+
+      <div class="f-legal">
+        <div class="f-code"><strong>Codice Fiscale:</strong> 93174580428</div>
+        <div class="f-code"><strong>IBAN:</strong> IT 91Z 062 300 268 500 003 088 1350</div>
+      </div>
+    </div>
+
+    <div class="f-right">
+      <div class="f-col-title">Seguici</div>
+
+      <a href="https://www.instagram.com/conerosurfclub" target="_blank">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        Instagram
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61576506789524" target="_blank">
+        <svg class="fb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M15 11h-2v7h-3v-7H8V8h2V6a3 3 0 0 1 3-3h2v3h-1a1 1 0 0 0-1 1v1h2z"></path></svg>
+        Facebook
+      </a>
+
+      <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a>
+    </div>
+    <hr class="section-divider">
+
+    <div class="f-tail f-copy">
+        <span class="f-code">© 2026 Conero Surf Club — Tutti i diritti riservati</span>
+        <span>Design &amp; Codice di <a href="https://www.alessandrodifa.com" target="_blank" rel="noopener">Alessandro DiFa</a></span>
+    </div>
     
-    <a href="https://www.instagram.com/conerosurfclub" target="_blank">
-      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
-      Instagram
-    </a>
-    
-    <a href="https://www.facebook.com/profile.php?id=61576506789524" target="_blank">
-      <svg class="fb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M15 11h-2v7h-3v-7H8V8h2V6a3 3 0 0 1 3-3h2v3h-1a1 1 0 0 0-1 1v1h2z"></path></svg>
-      Facebook
-    </a>
-    
-    <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a>
+
   </div>
 </footer>
 
