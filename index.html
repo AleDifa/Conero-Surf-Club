@@ -1,799 +1,597 @@
 <!DOCTYPE html>
-<html lang="it" prefix="og: https://ogp.me/ns#">
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/x-icon" href="/img/logo-aurora-per-le-marche.ico">
-  <link rel="shortcut icon" href="/img/logo-aurora-per-le-marche.ico">
-
-  <!-- SEO -->
-  <title>Aurora per le Marche – Associazione Culturale Ancona | Europa, Diritti e Ucraina</title>
-  <meta name="description" content="Associazione culturale e politica di ispirazione liberale e progressista ad Ancona e nelle Marche. Promuoviamo federalismo europeo, supporto all'Ucraina, diritti civili e democrazia.">
-  <meta name="keywords" content="associazione culturale Ancona, associazione culturale Marche, federalismo europeo Marche, supporto Ucraina Ancona, diritti civili Marche, centrosinistra liberale Ancona, Aurora Marche, Renew Europe">
-  <meta name="author" content="Aurora per le Marche">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.auroraperlemarche.eu/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:site_name" content="Aurora per le Marche">
-  <meta property="og:title" content="Aurora per le Marche – Associazione Culturale Ancona">
-  <meta property="og:description" content="Associazione liberale e progressista nelle Marche. Ci battiamo per l'Europa, i diritti civili e il supporto all'Ucraina ad Ancona e in tutta la regione.">
-  <meta property="og:url" content="https://www.auroraperlemarche.eu/">
-  <meta property="og:image" content="https://www.auroraperlemarche.eu/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Aurora per le Marche – Associazione Culturale">
-
-  <!-- Dati strutturati -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Aurora per le Marche",
-    "alternateName": "Associazione Aurora Marche",
-    "description": "Associazione culturale e politica nelle Marche di ispirazione liberale e progressista che promuove il federalismo europeo, i diritti civili, la libertà e il supporto all'Ucraina.",
-    "url": "https://www.auroraperlemarche.eu/",
-    "logo": "https://www.auroraperlemarche.eu/img/logo-aurora-per-le-marche.jpg",
-    "image": "https://www.auroraperlemarche.eu/img/logo-aurora-per-le-marche.jpg",
-    "telephone": "+393312227574",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ancona",
-      "addressRegion": "Marche",
-      "addressCountry": "IT"
-    },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Marche"
-    },
-    "sameAs": [
-      "https://www.instagram.com/aurora_per_le_marche",
-      "https://www.facebook.com/auroraperlemarche"
-    ],
-    "member": [
-      { "@type": "Person", "name": "Roberto Palumbo", "jobTitle": "Presidente" },
-      { "@type": "Person", "name": "Martina Bonci", "jobTitle": "Segretario" }
-    ]
-  }
-  </script>
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Stile -->
-  <link rel="stylesheet" href="style.css?v=2">
-
-  <!-- Fix mobile (Instagram in-app browser incluso) -->
-  <style>
-    html, body { max-width: 100%; overflow-x: hidden; }
-    img, video, iframe, svg { max-width: 100%; }
-    /* il titolo hero non andava mai a capo e sforava lo schermo */
-    h1 { white-space: normal !important; overflow-wrap: break-word; }
-    .navbar { -webkit-backdrop-filter: blur(12px); }
-
-    /* Logo tra l'etichetta e il titolo (multiply = il bianco del jpg sparisce sullo sfondo) */
-    .hero-logo {
-      display: block; width: 180px; height: auto; margin: 1.5rem 0 1rem;
-      mix-blend-mode: multiply;
-    }
-    @media (max-width: 900px) {
-      .hero-logo { width: 130px; margin: 1.25rem 0 .75rem; }
-    }
-
-    @media (max-width: 900px) {
-      /* Hamburger */
-      .menu-toggle {
-        display: flex !important; flex-direction: column; align-items: center; justify-content: center;
-        gap: 5px; width: 44px; height: 44px; padding: 0; z-index: 1002;
-        -webkit-tap-highlight-color: transparent;
-      }
-      .menu-toggle .bar { width: 25px; height: 3px; background-color: var(--dark, #333); border-radius: 2px; transition: .3s; }
-      .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-      .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-      .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-      /* Menu a tendina */
-      .nav-links {
-        position: absolute; top: 70px; left: 0; width: 100%; z-index: 1001;
-        flex-direction: column; align-items: stretch; gap: 0; margin: 0; padding: 0;
-        background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,.08);
-        max-height: calc(100vh - 70px); overflow-y: auto;
-        opacity: 0; visibility: hidden; transform: translateY(-10px);
-        transition: opacity .3s, visibility .3s, transform .3s;
-      }
-      .nav-links.active { opacity: 1; visibility: visible; transform: none; }
-      .nav-links li { width: 100%; text-align: left; border-bottom: 1px solid rgba(0,0,0,.06); }
-      .nav-links a {
-        display: block; width: 100%; padding: 1.1rem 1.5rem; font-size: .95rem; font-weight: 600;
-        letter-spacing: 1.5px; text-transform: uppercase; color: var(--dark, #111827);
-      }
-      .nav-links a::after { display: none; }
-
-      /* Padding eccessivi su schermi piccoli (stili inline) */
-      .valore-card, .partecipa-banner, .form-container { padding: 1.25rem !important; }
-      #privacy-modal > div { padding: 40px 20px 24px !important; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav class="navbar" aria-label="Navigazione principale">
-  <a href="#home" class="nav-logo" aria-label="Aurora per le Marche – Home">
-    <div class="logo-circle" aria-hidden="true">
-      <img src="img/aurora_per_le_marche_logo.jpg" alt="Logo di aurora">
-    </div>
-    <div class="nav-brand">Aurora <span>per le Marche</span></div>
-  </a>
-
-  <!-- Pulsante Hamburger per Mobile -->
-  <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-
-  <!-- Lista dei Link -->
-  <ul class="nav-links" role="list">
-    <li><a href="#home">Home</a></li>
-    <!-- <li><a href="#chi-siamo">Chi Siamo</a></li> -->
-    <li><a href="#valori">Valori</a></li>
-    <li><a href="#direttivo">Direttivo</a></li>
-    <li><a href="#attivita">Attività</a></li>
-    <li><a href="#conosciamoci">Conosciamoci</a></li>
-    <li><a href="#live">Live YouTube</a></li>
-    <li><a href="#contatti">Contatti</a></li>
-  </ul>
-</nav>
-
-
-<!-- HOME -->
-<section id="home" aria-label="Intestazione principale">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="orb2 hero-orb" aria-hidden="true"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag" aria-hidden="true">Associazione Culturale nella regione Marche</div>
-    <img class="hero-logo" src="img/aurora_per_le_marche_logo.jpg" alt="Logo Aurora per le Marche" width="180" height="180">
-    <h1>Stati Uniti d'Europa,<br>Supporto all'Ucraina,<br>Diritti Civili e Sociali</h1>
-    <p class="hero-desc">
-      Aurora è un'associazione culturale e aggregatore politico ad Ancona e nelle Marche che unisce persone e movimenti su tematiche condivise — per realizzare un'Europa federale, per difendere la libertà dei popoli e la centralità dei diritti civili e sociali anche sul nostro territorio.
-    </p>
-  </div>
-
-  <div class="hero-values" aria-label="Valori fondanti">
-    <div class="value-pill">
-      <strong>Stati Uniti d'Europa</strong>
-      Sostegno alle politiche europee e alla visione federalista
-    </div>
-    <div class="value-pill">
-      <strong>Supporto all'Ucraina</strong>
-      Indipendenza ucraina, sostegno militare e umanitario
-    </div>
-    <div class="value-pill">
-      <strong>Diritti Civili e Sociali</strong>
-      Femminismo, diritti LGBTQIA+, parità di genere, diritti del lavoro, diritto ad abitare
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-
-<!-- VALORI / AMBITI PROGRAMMATICI -->
-<section id="valori" aria-labelledby="valori-title">
-  <div class="section-header" style="margin-bottom: 2.5rem;">
-    <div class="section-label" aria-hidden="true">Valori</div>
-    <h2 id="valori-title">I nostri <span style="font-size: 2em;">3</span> <em>ambiti</em> strategici</h2>
-  </div>
-
-  <div class="valori-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem;">
-
-    <!-- 1. Dimensione Europea -->
-    <div class="valore-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; border-radius: 12px;">
-      <h3 style="">1. Stati Uniti d'Europa</h3>
-      <p style="font-style: italic; margin-bottom: 1rem; opacity: 0.9;">
-        Ci immaginiamo un Europa non più come un'unione di Stati sovrani che cooperano tramite trattati intergovernativi, ma come una federazione vera e propria, simile per struttura agli Stati Uniti.
-      </p>
-      <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
-        <li><strong>Sovranità e Azione Globale:</strong> Superare il principio dell'unanimità in politica estera per dotare l'Unione di una voce forte, coerente e autorevole sulla scena internazionale.</li>
-        <li><strong>Competitività:</strong> Consolidare il mercato comune, superare i veti, coordinare le politiche industriali ed energetiche per competere alla pari su scala globale.</li>
-        <li><strong>Riforme per una vita migliore:</strong> Transizione ecologica fondata su più spazi verdi e città a misura d'uomo, unita alla difesa delle imprese e allo sviluppo di tecnologie proprietarie fatte in europe.</li>
-      </ul>
-    </div>
-
-    <!-- 2. Supporto all'Ucraina -->
-    <div class="valore-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; border-radius: 12px;">
-      <h3 style="">2. Supporto all'Ucraina</h3>
-      <p style="font-style: italic; margin-bottom: 1rem; opacity: 0.9;">
-        Un impegno a favore della libertà dei popoli, della democrazia e del diritto internazionale contro ogni autocrazia.
-      </p>
-      <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
-        <li><strong>Sostegno Multidimensionale:</strong> Pieno supporto politico, finanziario, umanitario e militare per l'integrità territoriale.</li>
-        <li><strong>Prospettiva Europea:</strong> Sostenere il percorso di adesione dell'Ucraina come investimento strategico per la pace.</li>
-        <li><strong>Ricostruzione e Sicurezza:</strong> Pianificare il dopoguerra e un'architettura di sicurezza euroatlantica duratura.</li>
-      </ul>
-    </div>
-
-    <!-- 3. Diritti Civili -->
-    <div class="valore-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; border-radius: 12px;">
-      <h3 style="">3. Diritti Civili e Sociali</h3>
-      <p style="font-style: italic; margin-bottom: 1rem; opacity: 0.9;">
-        La centralità della persona, la libertà individuale e l'uguaglianza effettiva in una società aperta e inclusiva.
-      </p>
-      <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
-        <li><strong>Femminismo:</strong> diritti delle donne, parità di genere, diritto effettivo all'aborto, parità salariale e di carriera.</li>
-        <li><strong>Diritti:</strong> Ampliare i diritti civili, estensione del matrimonio egualitario, adozioni a coppie dello stesso sesso, diritti LGBTQIA+, eutanasia, legge regionale sul fine vita.</li>
-        <li><strong>Diritto all'abitare:</strong> accesso a un alloggio dignitoso, contrasto alla precarietà abitativa, canoni sostenibili e tutela delle fasce vulnerabili.</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- BOX ATTIVISMO / PARTECIPAZIONE -->
-  <div class="partecipa-banner" style="background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); padding: 2.5rem; border-radius: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
-    <h3 style="margin: 0; font-size: 1.5rem;">Ti rispecchi in questi valori? Unisciti a noi!</h3>
-    <p style="max-width: 700px; margin: 0; opacity: 0.9; font-size: 1rem; line-height: 1.5;">
-      Siamo uno spazio aperto. Chiunque voglia partecipare, fare attivismo e promuovere iniziative sul nostro territorio è il benvenuto. Mettiti in gioco insieme a noi!
-    </p>
-    <a href="https://wa.me/393312227574" target="_blank" rel="noopener noreferrer"
-       style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: bold; text-decoration: none; transition: opacity 0.2s;">
-      Scrivici su WhatsApp
-    </a>
-  </div>
-
-  <!-- SEZIONE LISTA SEMPLICE E CENTRATA -->
-  <div class="section-header" style="text-align: center; margin-top: 5%;">
-    <h2 id="pro-title" style="font-size: 1.8rem;"><em>Siamo favorevoli a</em></h2>
-  </div>
-
-  <div style="max-width: 900px; margin: 0 auto; padding: 2rem; border-radius: 12px;">
-    <ol style="margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 1rem; font-size: 1rem; line-height: 1.6;">
-      <li><strong>Nucleare pulito:</strong> per una transizione energetica basata sulla scienza, sicura e orientata all'indipendenza strategica.</li>
-      <li><strong>Unione Europea e NATO:</strong> difesa del diritto internazionale, dell'alleanza euroatlantica e della libertà dell'Ucraina.</li>
-      <li><strong>Stati Uniti d'Europa:</strong> per un'Unione federale forte, superando i veti e l'unanimità per contare davvero a livello globale.</li>
-      <li><strong>Diritto all'abitare:</strong> sostegno alle fasce più deboli della popolazione che non riesco ad accedere nè a case popolari nè al mercato immobiliare libero, difesa dell'abitare in quanto diritto per tutti e tutte.</li>
-      <li><strong>Femminismo:</strong> pari rappresentanza delle donne e degli uomini nella politica e negli spazi decisionali, decidere del proprio corpo e della propria salute, visione critica ad un sitema dove il lavoro, le leggi o aspettative culturali possono favorire un genere rispetto a un altro.</li>
-      <li><strong>Diritti civili e libertà individuali:</strong> per una società aperta, plurale, inclusiva e fondata sull'uguaglianza effettiva dei diritti.</li>
-    </ol>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-
-<!-- DIRETTIVO -->
-<section id="direttivo" aria-labelledby="direttivo-title">
-  <div class="direttivo-header">
-    <div class="section-label" aria-hidden="true">Chi ci guida</div>
-    <h2 id="direttivo-title"><em>Direttivo</em></h2>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- CARICHE -->
-  <div class="board-grid">
-
-    <article class="board-card presidente">
-      <div class="board-avatar">
-        <img src="img/roberto-palumbo-presidente-aurora.avif"
-             alt="Roberto Palumbo, Presidente di Aurora per le Marche"
-             width="90" height="90"
-             onerror="this.outerHTML='👤'">
-      </div>
-      <span class="board-role">Presidente</span>
-      <h3>Roberto Palumbo</h3>
-      <p>Formazione giuridica all'Università di Trento specializzato in diritto del lavoro e nuove tecnologie. Convinto federalista Europeo, appassionato di letteratura e le espressioni dell'umano.</p>
-    </article>
-
-    <article class="board-card segretario">
-      <div class="board-avatar">
-        <img src="img/martina-bonci-segretaria-aurora.avif"
-             alt="Martina Bonci, Segretaria di Aurora per le Marche"
-             width="90" height="90"
-             onerror="this.outerHTML='📋'">
-      </div>
-      <span class="board-role">Segretaria</span>
-      <h3>Martina Bonci</h3>
-      <p>Dottoressa di ricerca in ambito educativo, Docente di sostegno alle superiori. Si dedica all'impegno politico, con attenzione alle policy legate al contrasto all'emarginazione sociale, alla dispersione scolastica e all'emergenza abitativa</p>
-    </article>
-
-    <article class="board-card onorario">
-      <div class="board-avatar">
-        <img src="img/pierpaolo-loffreda-presidente-onorario-aurora.avif"
-             alt="Pierpaolo Loffreda, Presidente Onorario di Aurora per le Marche"
-             width="90" height="90"
-             onerror="this.outerHTML='🏛️'">
-      </div>
-      <span class="board-role">Presidente Onorario</span>
-      <h3>Pierpaolo Loffreda</h3>
-      <p>Giornalista, professore universitario di cinema, mass media e audiovisi all'Accademia di Belle Arti di Urbino. Appassionato ed esperto di Etiopia</p>
-    </article>
-
-    <article class="board-card tesoriere">
-      <div class="board-avatar">
-        <img src="img/marco-simoni-direttivo-aurora.avif"
-             alt="Membro del Direttivo di Aurora per le Marche"
-             width="90" height="90"
-             onerror="this.outerHTML='👤'">
-      </div>
-      <span class="board-role">Tesoriere</span>
-      <h3>Marco Simoni</h3>
-      <p>IT manager d'azienda ed esponente attivo di Azione Marche, laureato in Ingegneria Informatica e dell'Automazione Industriale.</p>
-    </article>
-
-  </div>
-
-  <!-- DIVISORE -->
-  <div class="members-divider">
-    <span></span>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- MEMBRI SENZA CARICA -->
-  <div class="board-grid-members">
-
-    <article class="board-card-member">
-      <div class="board-avatar-sm">
-        <img src="img/marta-mataloni-social-media-manager.avif"
-             alt="Membro Responsabile dei Social media e comunicazione"
-             width="72" height="72"
-             onerror="this.outerHTML='👤'">
-      </div>
-      <span class="member-role-label">Responsabile dei Social media e comunicazione</span>
-      <h4>Marta Mataloni</h4>
-      <p>Formazione giuridica, femminista, liberale e progressista</p>
-    </article>
-
-    <article class="board-card-member">
-      <div class="board-avatar-sm">
-        <img src="img/yulia-direttivo-aurora.avif"
-             alt="Membro del Direttivo di Aurora per le Marche"
-             width="72" height="72"
-             onerror="this.outerHTML='👤'">
-      </div>
-      <span class="member-role-label">Nel Direttivo</span>
-      <h4>Yuliya Dehtyaryova</h4>
-      <p>Originaria di Leopoli, in Ucraina, è responsabile dell'Associazione Europea Italia-Ucraina Maidan - Regione Marche. 🇺🇦</p>
-    </article>
-
-
-
-  <!--   <article class="board-card-member">
-      <div class="board-avatar-sm">
-        <img src="img/emanuele-martinelli-direttivo-aurora-tesoriere.avif"
-             alt=""
-             width="72" height="72"
-             onerror="this.outerHTML='👤'">
-      </div>
-      <span class="member-role-label">Co-fondatore di Aurora</span>
-      <h4>Emanuele Merio Martinelli</h4>
-      <p>Liberale e Radicale, predica l'Amore ed il primato del Diritto. Considera Ernesto Rossi il suo capostipete ideale.</p>
-    </article>
-    --> 
-  </div>
-</section>
-
-<hr class="section-divider">
-
-
-
-<section id="attivita" aria-labelledby="attivita-title">
-  <div class="attivita-header">
-    <div class="section-label" aria-hidden="true">Cosa Facciamo</div>
-    <h2>cosa facciamo nel <em>concreto</em> per portare avanti i nostri obiettivi</h2>
-  </div>
-
-  <div class="attivita-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); margin-top: 3rem;">
-
-    <!-- Eventi e incontri sul territorio -->
-    <div class="attivita-card" style="padding: 2rem; background: var(--bg-card, #fff)">
-      <h3 style="font-size: 1.25rem; color: var(--heading, #111);">⭐ Eventi e incontri sul territorio</h3>
-      <p>
-        Organizziamo commemorazioni, conferenze, dibattiti pubblici per favorire il confronto diretto tra esperti e cittadini interessati sui temi di politica, storia, scienza e società.
-      </p>
-    </div>
-
-    <!-- Video e contenuti digitali -->
-    <div class="attivita-card" style="padding: 2rem; background: var(--bg-card, #fff)">
-      <h3 style="font-size: 1.25rem; color: var(--heading, #111);">📹 Video e contenuti digitali</h3>
-      <p>
-        Crediamo che gli eventi e gli incontri debbano essere diffusi il più possibile tramite i video che registriamo agli incontri per estendere la portata del dibattito oltre la sala.
-      </p>
-    </div>
-
-    <!-- Aperitivi tematici -->
-    <div class="attivita-card" style="padding: 2rem; background: var(--bg-card, #fff)">
-      <h3 style="font-size: 1.25rem; color: var(--heading, #111);">🍹 Aperitivi Tematici</h3>
-      <p>
-        Momento di confronto e dialogo interno tra gli iscritti, dove viviamo gli <strong>aperitivi informali</strong> come momenti di socialità e scambio di visioni politiche per rafforzare il legame associativo.
-      </p>
-      <ul>
-        <li>Gli aperitivi sono il miglior modo di conoscerci: scrivi o chiama la nostra Segretaria per avere qualche info in più <a href="tel:+393312227574"><em>331 222 7574</em></a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <h2 id="attivita-title" style="text-align: center; width: 100%; margin-left: auto; margin-right: auto; margin-top: 5%;">
-    Le nostre <em>Attività</em> di maggiore rilievo
-  </h2>
-
-  <div class="activities-grid">
-
-    <!-- Card in evidenza -->
-    <article class="activity-card activity-card--featured">
-      <img src="img/shock-settico-resta-48-ore-barella-civitanova.avif"
-           alt="Choc settico, 70enne per 48 ore in barella al pronto soccorso" loading="lazy">
-
-      <div class="activity-body">
-        <span class="activity-tag tag-evento">Tematica</span>
-        <h3>La denuncia di Aurora per le Marche: "sistema sanitario al collasso"</h3>
-        <p>
-          Abbiamo reso pubblica la testimonianza dei familiari di una donna di circa settant'anni, rimasta oltre 48 ore su una barella al pronto soccorso di Civitanova Marche, senza un posto letto disponibile in tutta la regione.
-          <br><br>
-          La notizia è stata ripresa da decine di testate, ben oltre i confini regionali. È un segnale: quando si denuncia con chiarezza, la gente riconosce la propria esperienza e risponde.
-        </p>
-        <div class="activity-meta">
-          <span>📍 Civitanova Marche</span>
-          <span>🗓 19/20 Maggio 2026</span>
-        </div>
-        <a href="attivita-singola-malasanità-civitanova.html" target="_blank" rel="noopener" class="btn-outline">
-          🗞️ Leggi l'articolo completo
-        </a>
-      </div>
-    </article>
-
-    <article class="activity-card">
-      <img src="img/evento-tassa-etica-auora-ancona.avif"
-           alt="Dibattito Aurora per le Marche sulla tassa etica ad Ancona, febbraio 2026" loading="lazy">
-
-      <div class="activity-body">
-        <span class="activity-tag tag-dibattito">Dibattito</span>
-        <h3>Confronto sulla Tassa Etica con i partiti</h3>
-        <p>
-          L'evento di Ancona ha analizzato la proposta di legge per abolire la "tassa etica", un'addizionale del 25% su IRPEF e IRES per il settore pornografico lecito. Il dibattito ha evidenziato come questa imposta sia discriminatoria: non colpisce in base alla capacità contributiva, ma applica un pregiudizio morale a un'attività lavorativa regolare.
-        </p>
-        <div class="activity-meta">
-          <span>📍 Ancona</span>
-          <span>🗓 Febbraio 2026</span>
-        </div>
-        <a href="https://firmereferendum.giustizia.it/referendum/open/dettaglio-open/5600018"
-           target="_blank" rel="noopener noreferrer" class="activity-link"
-           aria-label="Firma il referendum per abolire la tassa etica sul portale del Ministero della Giustizia">
-          ✍️ Firma il referendum
-        </a>
-      </div>
-    </article>
-
-    <article class="activity-card">
-      <img src="img/ucraina-commemorazione-ancona.avif"
-           alt="Commemorazione del conflitto in Ucraina co-organizzata da Aurora per le Marche, 24 febbraio 2026" loading="lazy">
-
-      <div class="activity-body">
-        <span class="activity-tag tag-commemorazione">Commemorazione</span>
-        <h3>Commemorazione della Guerra in Ucraina</h3>
-        <p>
-          Un momento di riflessione collettiva e memoria civile per non dimenticare il dramma del conflitto in Ucraina. Aurora co-organizza con l'associazione europea italia-ucraina Maidan della regione Marche una cerimonia pubblica per la solidarietà e la difesa dei diritti umani.
-        </p>
-        <div class="activity-meta">
-          <span>📍 Marche</span>
-          <span>🗓 24 Febbraio 2026</span>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-  <a href="attivita.html"
-     target="_blank" rel="noopener noreferrer"
-     class="btn-attivita"
-     aria-label="Guarda tutte le attività di Aurora per le Marche">
-    Guarda tutte le attività
-  </a>
-
-</section>
-
-<hr class="section-divider">
-
-
-
-
-<!-- CONOSCIAMOCI -->
-<section id="conosciamoci" aria-labelledby="conosciamoci-title">
-  <div class="conosciamoci-inner">
-
-    <div class="conosciamoci-header">
-      <div class="section-label" aria-hidden="true">Conosciamoci</div>
-      <h2 id="conosciamoci-title">Vieni a scoprire <em>Aurora</em></h2>
-    </div>
-
-    <div class="conosciamoci-layout">
-
-      <!-- Colonna testo -->
-      <div>
-        <div class="conosciamoci-text">
-          <p>
-            <strong>Prima ci conosciamo, poi se vuoi puoi tesserarti :)</strong>
-            <br>
-            Sappiamo che entrare in un'associazione è un passo importante: per questo ti invitiamo a unirti alla nostra community su WhatsApp per conoscerci e scoprire chi siamo.
-          </p>
-          <p>
-            <a href="https://wa.me/393312227574" style="font-weight:bold; color:#25D366;">👉 Clicca qui per entrare nel gruppo WhatsApp di benvenuto</a>
-          </p>
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid #e0e0e0;">
-          <p>
-            <strong>Tesseramento</strong> Se desideri formalizzare il tuo impegno e tesserarti ufficialmente ad <em>Aurora per le Marche</em>, puoi compilare il modulo qui sotto.
-          </p>
-        </div>
-
-        <div class="section-tesseramento" aria-hidden="true">I vantaggi del tesseramento</div>
-
-        <div class="conosciamoci-perks" style="margin-top: 24px;">
-          <div class="perk-item">
-            <div class="perk-icon">📣</div>
-            <div class="perk-text">
-              <strong>Ottenere uno spazio pubblico e visibilità</strong>
-              Avrai la possibilità di metterci la faccia, proporre nuove iniziative e trasformare le tue idee in eventi e progetti concreti da promuovere in prima persona.
-            </div>
-          </div>
-          <div class="perk-item">
-            <div class="perk-icon">📚</div>
-            <div class="perk-text">
-              <strong>Formazione e crescita</strong>
-              Avrai l'opportunità di apprendere e formarti confrontandoti direttamente con esperti sui temi dei nostri valori, partecipando anche a chiamate interne dedicate all'approfondimento.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Colonna modulo -->
-      <div class="form-container" style="padding: 40px; border: 1px solid #e0e0e0; text-align: center; background-color: #f9f9f9; border-radius: 16px;">
-        <h3 style="font-family: sans-serif; margin-bottom: 12px; color: #333;">Adesione Associazione AURORA per le Marche</h3>
-        <p style="font-family: sans-serif; margin-bottom: 20px; color: #666;">Per completare il tesseramento ufficiale, compila il modulo cliccando il tasto qui sotto.</p>
-
-        <!-- GDPR Info box -->
-        <div style="background:#fff8f0; border:1px solid #fcd5a0; border-radius:10px; padding:16px 18px; margin-bottom:22px; text-align:left;">
-          <p style="font-family:'Jost',sans-serif; font-size:0.82rem; color:#92400e; line-height:1.7; margin:0;">
-            &#x1F512; <strong>Trattamento dei dati personali (GDPR):</strong> I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno trattati da <strong>Aurora per le Marche</strong> esclusivamente per la gestione del rapporto associativo, in conformità al Reg. UE 2016/679. Il modulo è gestito tramite Google Forms e viene caricato solo dopo il tuo consenso.
-            <br>
-            <a href="#" onclick="document.getElementById('privacy-modal').style.display='flex'; return false;"
-               style="color:#e8417a; font-weight:700; text-decoration:underline;">Leggi l'informativa completa sulla Privacy &#x2192;</a>
-          </p>
-        </div>
-
-        <!-- Consenso checkbox (obbligatorio) -->
-        <div style="display:flex; align-items:flex-start; gap:10px; text-align:left; margin-bottom:22px; background:#fff; border:1px solid #d1d5db; border-radius:10px; padding:14px 16px;">
-          <input type="checkbox" id="privacy-consent" name="privacy-consent"
-                 style="margin-top:3px; width:18px; height:18px; accent-color:#e8417a; flex-shrink:0; cursor:pointer;"
-                 onchange="var b=document.getElementById('form-btn'); b.disabled=!this.checked; b.style.opacity=this.checked?'1':'0.45'; b.style.cursor=this.checked?'pointer':'not-allowed';">
-          <label for="privacy-consent" style="font-family:'Jost',sans-serif; font-size:0.85rem; color:#374151; line-height:1.6; cursor:pointer;">
-            Ho letto e accetto l'<a href="#" onclick="document.getElementById('privacy-modal').style.display='flex'; return false;" style="color:#e8417a; font-weight:600;">informativa privacy</a> e acconsento al trattamento dei miei dati personali da parte di Aurora per le Marche per le finalità associative descritte. <strong>(Obbligatorio)</strong>
-          </label>
-        </div>
-
-        <button id="form-btn" type="button" disabled onclick="apriModulo()"
-           style="background: linear-gradient(135deg, #3a47b7, #2563c7); color: white; padding: 15px 36px; border: none; cursor: not-allowed; font-family: 'Jost', sans-serif; font-weight: bold; font-size: 1rem; display: inline-block; text-transform: uppercase; letter-spacing: 1px; border-radius: 50px; box-shadow: 0 8px 25px rgba(103,58,183,0.35); opacity: 0.45; transition: opacity 0.2s;">
-          Apri il modulo di iscrizione &#x2192;
-        </button>
-
-        <p style="font-family:'Jost',sans-serif; font-size:0.75rem; color:#9ca3af; margin-top:12px;">Spunta la casella sopra per abilitare il pulsante</p>
-      </div>
-
-    </div>
-
-    <!-- Modulo Google (nascosto, si carica solo dopo il clic) -->
-    <div id="modulo-wrapper" style="display:none; margin-top:40px; text-align:center;">
-      <iframe id="modulo-iframe"
-              data-src="https://docs.google.com/forms/d/e/1FAIpQLSfxn-CCdgl1MxD0f9iRr97fZAHCtC05N9QMcbcpJ4z1-PZbXw/viewform?embedded=true"
-              title="Modulo di adesione Aurora per le Marche"
-              style="width:100%; max-width:640px; height:1865px; border:0;">
-        Caricamento…
-      </iframe>
-      <p style="font-family:'Jost',sans-serif; font-size:0.8rem; color:#9ca3af;">
-        Problemi a visualizzare il modulo?
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxn-CCdgl1MxD0f9iRr97fZAHCtC05N9QMcbcpJ4z1-PZbXw/viewform" target="_blank" rel="noopener">Aprilo in una nuova scheda</a>
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<script>
-  function apriModulo() {
-    if (!document.getElementById('privacy-consent').checked) return;
-    var iframe = document.getElementById('modulo-iframe');
-    if (!iframe.src) iframe.src = iframe.dataset.src;
-    var wrap = document.getElementById('modulo-wrapper');
-    wrap.style.display = 'block';
-    wrap.scrollIntoView({ behavior: 'smooth' });
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conero Surf Club</title>
+
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="shortcut icon" href="/img/favicon.ico">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "Conero Surf Club",
+  "alternateName": "Conero Surf Club Associazione",
+  "description": "Associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del surf.",
+  "url": "https://www.conerosurfclub.it/",
+  "logo": "https://www.conerosurfclub.it/img/conero_surf_club_logo.png",
+  "image": "https://www.conerosurfclub.it/img/conero_surf_club_logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ancona",
+    "addressRegion": "Marche",
+    "addressCountry": "IT"
+  },
+  "areaServed": [
+    { "@type": "Place", "name": "Ancona" },
+    { "@type": "Place", "name": "Portonovo" },
+    { "@type": "Place", "name": "Conero" },
+    { "@type": "AdministrativeArea", "name": "Marche" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/conerosurfclub"
+  ]
+}
 </script>
 
-<hr class="section-divider">
+<!-- Stili -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="style.css">
 
 
-<!-- LIVE YOUTUBE -->
-<section id="live" aria-labelledby="live-title">
-  <div class="live-header">
-    <div class="section-label" aria-hidden="true">Su YouTube</div>
-    <h2 id="live-title">Le nostre <em>Live</em></h2>
-  </div>
 
-  <div class="live-banner">
-    <div class="live-text">
-      <div class="live-badge">
-        <span class="dot"></span>
-        Live su YouTube
+    
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-top">
+    <a href="#home" class="nav-logo">
+      <img src="img/conero_surf_club_logo.png" alt="Logo" />
+      <div class="nav-logo-text">
+        Conero Surf Club
+        <span class="nav-logo-sub"></span>
       </div>
-      <h3>Dibattiti in diretta con <em>ospiti e protagonisti</em> della politica</h3>
-      <p>
-        Il canale Aurora per le Marche è lo spazio dove invitiamo ospiti di diversa estrazione — politici, esperti, rappresentanti della società civile — per un dialogo autentico sui temi che riguardano le Marche e l'Italia.
-      </p>
+    </a>
+    <button class="hamburger" id="ham" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-bar" id="navBar">
+    <a href="#home"       data-s="home">Home</a>
+    <a href="#chi-siamo"  data-s="chi-siamo">Chi Siamo</a>
+    <a href="#manifesto"  data-s="manifesto">Manifesto</a>
+    <a href="#eventi"     data-s="eventi">Eventi</a>
+    <a href="#blog"       data-s="blog">Blog</a>
+    <a href="#gallery"    data-s="gallery">Gallery</a>
+    <a href="#doc-faq"    data-s="doc-faq">Tesseramento & FAQ</a>
+    <a href="#contatti"   data-s="contatti">Contatti</a>
+    <a href="#donazioni"  class="cta-donazioni">Donazioni</a> 
+  </div>
+    <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"       onclick="closeMenu()">Home</a>
+    <a href="#chi-siamo"  onclick="closeMenu()">Chi Siamo</a>
+    <a href="#manifesto"  onclick="closeMenu()">Manifesto</a>
+    <a href="#eventi"     onclick="closeMenu()">Eventi</a>
+    <a href="#blog"       onclick="closeMenu()">Blog</a>
+    <a href="#gallery"    onclick="closeMenu()">Gallery</a>
+    <a href="#doc-faq"    onclick="closeMenu()">Tesseramento & FAQ</a>
+    <a href="#contatti"   onclick="closeMenu()">Contatti</a>
+    <a href="#donazioni"  class="cta-donazioni" onclick="closeMenu()">Donazioni</a> 
+  </div>
+</nav>
 
-      <a href="https://www.youtube.com/@AuroraPerLeMarche/streams"
-         target="_blank" rel="noopener noreferrer"
-         class="btn-youtube"
-         aria-label="Guarda le live di Aurora per le Marche su YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-        Guarda le Live
-      </a>
-    </div>
+<section id="home">
+  <div class="hero-bg">
+    <img src="img/2_conero_surf_vela.jpeg" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-est">Riviera del Conero · Est. 2026</p>
+    <img src="img/conero surf club3-Photoroom.png" alt="Conero Surf Club" class="surf-logo">
+    <p class="hero-sub">RIDE.LIVE.PROTECT.SHARE</p>
   </div>
 </section>
 
-<hr class="section-divider">
-
-
-<!-- CONTATTI -->
-<footer class="site-footer" id="contatti">
-  <div class="footer-container">
-
-    <div class="footer-col">
-      <h4>Aurora per le Marche</h4>
-      <p>Associazione attiva sul territorio marchigiano per promuovere cultura civica, dibattito pubblico e partecipazione attiva dei cittadini.</p>
-    </div>
-
-    <div class="footer-col">
-      <h4>Link Rapidi</h4>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="chi-siamo.html">Chi Siamo</a></li>
-        <li><a href="attivita.html">Attività</a></li>
-        <li><a href="conosciamoci.html">conosciamoci</a></li>
-        <li><a href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Seguici sui Social</h4>
-      <div class="footer-social-links">
-        <p><a href="https://www.facebook.com/auroraperlermarche" target="_blank" rel="noopener noreferrer">Aurora per le Marche</a></p>
-        <p><a href="https://www.instagram.com/aurora_per_le_marche" target="_blank" rel="noopener noreferrer">@aurora_per_le_marche</a></p>
+<div id="chi-siamo">
+  <div class="container">
+    <span class="label">La nostra storia</span>
+    <h2 class="big-title">Chi<br>Siamo</h2>
+    
+    <div class="chi-layout">
+      <div class="chi-text">
+        <div class="subsection">
+          <h3>La Nostra Identità</h3>
+          <p>Conero Surf Club è un'associazione culturale e sociale nata dalla passione per il mare e dalla volontà di creare uno spazio dove la comunità possa condividere valori di rispetto, sostenibilità e consapevolezza ambientale.</p>
+          <p style="margin-top:16px">Non siamo un'associazione sportiva dilettantistica. Il nostro obiettivo è puramente sociale e culturale: vogliamo valorizzare il territorio del Conero, preservare la memoria della tradizione del surf, promuovere la consapevolezza ambientale e costruire una comunità inclusiva e consapevole.</p>
+        </div>
+      </div>
+      
+      <div class="chi-text">
+        <div class="subsection">
+          <h3>Il Nostro Logo</h3>
+          <p>Il nostro logo rappresenta l'essenza dell'associazione: un triangolo che evoca la montagna del Conero e le onde del mare che lo circondano a Nord e a Sud. Le onde simboleggiano il movimento perpetuo dell'oceano e l'energia del surf, mentre il triangolo, che si erge in mezzo al mare, rappresenta una freccia che orienta le nostre scelte e le nostre azioni verso il mare e per il mare.</p>
+        </div>
       </div>
     </div>
-
   </div>
+</div>
+<hr class="sep">
 
-  <div class="footer-custom">
-    <p>&copy; 2026 Aurora per le Marche. Tutti i diritti riservati</p>
-    <p>Design &amp; Codice di <a href="https://www.alessandrodifa.com" target="_blank" rel="noopener" class="glow-link">Alessandro DiFa</a></p>
-  </div>
-</footer>
-
-
-<!-- PRIVACY POLICY MODAL -->
-<div id="privacy-modal"
-     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; padding:20px;"
-     role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
-
-  <div style="background:white; border-radius:20px; max-width:720px; width:100%; max-height:85vh; overflow-y:auto; padding:48px 40px; position:relative; font-family:'Jost',sans-serif;">
-
-    <button onclick="document.getElementById('privacy-modal').style.display='none';"
-            style="position:absolute; top:18px; right:20px; background:none; border:none; font-size:1.6rem; cursor:pointer; color:#374151; line-height:1;"
-            aria-label="Chiudi Privacy Policy">×</button>
-
-    <h2 id="privacy-modal-title" style="font-family:'Playfair Display',serif; font-size:1.7rem; color:#111827; margin-bottom:6px;">Privacy Policy</h2>
-    <p style="color:#e8417a; font-size:0.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; margin-bottom:28px;">Informativa ai sensi dell'art. 13 GDPR (Reg. UE 2016/679)</p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">1. Titolare del Trattamento</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">
-      Aurora per le Marche – Associazione Culturale, con sede in Ancona (AN), Marche, Italia.<br>
-      Contatto del Titolare: <a href="mailto:info@auroraperlemarche.eu" style="color:#2563c7;">info@auroraperlemarche.eu</a> · Tel. 339 731 6559
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">2. Dati Raccolti e Finalità</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">Attraverso il modulo di conosciamoci (Google Forms) raccogliamo i seguenti dati personali:</p>
-    <ul style="color:#374151; line-height:1.9; font-size:0.9rem; padding-left:20px; margin:8px 0;">
-      <li><strong>Nome e cognome</strong> – per identificare il socio</li>
-      <li><strong>Data di nascita</strong> – per verificare la maggiore età (ove richiesto)</li>
-      <li><strong>Codice fiscale</strong> – per adempimenti fiscali e associativi obbligatori</li>
-      <li><strong>Indirizzo email</strong> – per comunicazioni associative</li>
-      <li><strong>Numero di telefono</strong> – per comunicazioni operative (facoltativo)</li>
-    </ul>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem; margin-top:8px;">
-      <strong>Finalità:</strong> gestione del rapporto associativo, adempimenti statutari e fiscali, invio di comunicazioni relative alle attività dell'associazione.
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">3. Base Giuridica</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">
-      Il trattamento è fondato su: <strong>esecuzione di un contratto</strong> (il rapporto associativo – art. 6.1.b GDPR) e <strong>obbligo legale</strong> per i dati richiesti dalla normativa fiscale e associativa (art. 6.1.c GDPR). Per le comunicazioni promozionali sulle attività dell'associazione, il trattamento è basato sul <strong>legittimo interesse</strong> dell'associazione (art. 6.1.f GDPR).
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">4. Destinatari e Trasferimento dei Dati</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">
-      I dati sono trattati internamente dai soli membri del direttivo autorizzati. Il modulo di iscrizione è gestito tramite <strong>Google Forms</strong> (Google LLC), i cui server possono essere ubicati anche fuori dall'UE. Google aderisce alle <em>Standard Contractual Clauses</em> della Commissione Europea, garantendo un livello di protezione adeguato. I dati non vengono ceduti né venduti a terzi per finalità commerciali.
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">5. Periodo di Conservazione</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">
-      I dati sono conservati per tutta la durata del rapporto associativo e, successivamente, per il periodo previsto dagli obblighi fiscali e civilistici (generalmente 10 anni), salvo esercizio del diritto di cancellazione ove compatibile con gli obblighi di legge.
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">6. I Tuoi Diritti (artt. 15–22 GDPR)</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">Hai il diritto di:</p>
-    <ul style="color:#374151; line-height:1.9; font-size:0.9rem; padding-left:20px; margin:8px 0;">
-      <li><strong>Accesso</strong>: ottenere copia dei dati che ti riguardano</li>
-      <li><strong>Rettifica</strong>: correggere dati inesatti o incompleti</li>
-      <li><strong>Cancellazione</strong> ("diritto all'oblio"): richiedere la rimozione dei dati</li>
-      <li><strong>Limitazione</strong>: limitare il trattamento in determinate circostanze</li>
-      <li><strong>Opposizione</strong>: opporti al trattamento basato su legittimo interesse</li>
-      <li><strong>Portabilità</strong>: ricevere i dati in formato strutturato e leggibile da macchina</li>
-    </ul>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem; margin-top:8px;">
-      Per esercitare i tuoi diritti scrivi a <a href="mailto:info@auroraperlemarche.eu" style="color:#2563c7;">info@auroraperlemarche.eu</a>. Hai inoltre il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener" style="color:#2563c7;">www.garanteprivacy.it</a>).
-    </p>
-
-    <h3 style="font-size:1rem; font-weight:700; color:#111827; margin:20px 0 8px;">7. Cookie e Dati di Navigazione</h3>
-    <p style="color:#374151; line-height:1.8; font-size:0.9rem;">
-      Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Non vengono utilizzati cookie di profilazione o di tracciamento di terze parti, ad eccezione di quelli eventualmente generati dai widget di Google Fonts e dei link ai social network (Instagram, Facebook, YouTube), soggetti alle rispettive privacy policy.
-    </p>
-
-    <div style="background:#f0f9ff; border:1px solid #bfdbfe; border-radius:12px; padding:18px 20px; margin-top:24px;">
-      <p style="color:#1e40af; font-size:0.85rem; line-height:1.7; margin:0;">
-        <strong>ℹ️ Ultimo aggiornamento:</strong> Giugno 2025. Questa informativa può essere aggiornata: ti invitiamo a consultarla periodicamente. Ogni variazione sostanziale sarà comunicata via email ai soci.
-      </p>
+<div id="manifesto">
+  <div class="container">
+    <span class="label">I nostri principi</span>
+    <h2 class="big-title">Manifesto</h2>
+    
+    <div class="manifesto-grid">
+      <div class="manifesto-item">
+        <h3>1. Preservare, Tutelare e Valorizzare il Territorio</h3>
+        <p>Il Conero è un patrimonio naturale e culturale unico. Ci impegniamo a preservare, tutelare e valorizzare il territorio, con particolare attenzione alla costa, al mare e all'ambiente naturale.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>2. Divulgare i Principi della Cultura Marina</h3>
+        <p>Promuoviamo la conoscenza, la storia e i valori legati al surf e alla tradizione marina come pratica culturale legata alla natura.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>3. Promuovere Inclusione e Comunità</h3>
+        <p>Favoriamo inclusione, aggregazione e collaborazione tra persone di tutte le età e provenienze.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>4. Promuovere Sicurezza, Formazione e Consapevolezza</h3>
+        <p>La sicurezza e la consapevolezza ambientale dei nostri soci sono prioritarie. Organizziamo attività di formazione e iniziative educative.</p>
+      </div>
+      
+      <div class="manifesto-item">
+        <h3>5. Divulgare e Preservare la Tradizione Culturale</h3>
+        <p>Divulghiamo, tuteliamo e valorizziamo la tradizione e la storia della cultura marina nel Conero.</p>
+      </div>
     </div>
+  </div>
+</div>
+<hr class="sep">
 
-    <button onclick="document.getElementById('privacy-modal').style.display='none';"
-            style="margin-top:28px; width:100%; padding:14px; background:linear-gradient(135deg,#e8417a,#2563c7); color:white; border:none; border-radius:50px; font-family:'Jost',sans-serif; font-weight:700; font-size:0.95rem; cursor:pointer; letter-spacing:0.5px;">
-      Ho letto e capito
-    </button>
+<div id="eventi">
+  <div class="container">
+    <span class="label">Partecipa</span>
+    <h2 class="big-title">Eventi</h2>
+    
+    <div class="eventi-content">
+      <p>Per rimanere sempre aggiornato sugli eventi, segui la nostra pagina Instagram:</p>
+        <a href="https://www.instagram.com/conerosurfclub" target="_blank" class="ig-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          <span>@conerosurfclub</span>
+        </a>
+
+      <div class="eventi-gallery">
+        <div class="eventi-item" onclick="openLb('img/conero-surf-club-ancona-free-skate-evento.jpg')">
+          <img src="img/conero-surf-club-ancona-free-skate-evento.jpg" alt="Evento 3" class="eventi-img">
+          <div class="g-overlay">
+            <span>Visualizza</span>
+          </div>
+        </div>
+
+        <div class="eventi-item" onclick="openLb('img/evento_uno_film.jpeg')">
+          <img src="img/evento_uno_film.jpeg" alt="Evento 2" class="eventi-img">
+          <div class="g-overlay">
+            <span>Visualizza</span>
+          </div>
+        </div>
+
+        <div class="eventi-item" onclick="openLb('img/evento_due_spiaggina.jpeg')">
+          <img src="img/evento_due_spiaggina.jpeg" alt="Evento 1" class="eventi-img">
+          <div class="g-overlay">
+            <span>Visualizza</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="eventi-prop">
+        <h3>Vuoi Proporre un Evento?</h3>
+        <p>Diventa socio del Conero Surf Club e costruiamo insieme il prossimo evento. La tua voce è importante.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+
+<div id="blog">
+  <div class="container">
+    <span class="label">Articoli</span>
+    <h2 class="big-title">Blog</h2>
+    
+    <div class="blog-list">
+      
+      <!-- Articolo 1 -->
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleBlogDinamico(this, 'voglio-imparare-a-surfare.html')">
+          Voglio imparare a surfare
+          <span class="blog-icon" style="font-weight:bold;">&gt;</span>
+        </button>
+        <div class="faq-ans"></div>
+      </div>
+
+      <!-- Articolo 2 -->
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleBlogDinamico(this, 'La-sicurezza-in-mare.html')">
+          La sicurezza in mare 
+          <span class="blog-icon" style="font-weight:bold;">&gt;</span>
+        </button>
+        <div class="faq-ans"></div>
+      </div>
+
+      <!-- Articolo 3 -->
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleBlogDinamico(this, 'Le-regole-(non)-scritte-del-surf.html')">
+          Come ci si comporta in mare, parte 1: “Le regole (non) scritte del surf” 
+          <span class="blog-icon" style="font-weight:bold;">&gt;</span>
+        </button>
+        <div class="faq-ans"></div>
+      </div>
+
+    </div>
   </div>
 </div>
 
-<script src="js/main.js?v=2"></script>
+    </div>
+  </div>
+</div>
+<hr class="sep">
+<div id="gallery">
+  <div class="container">
+   <div class="gallery-header">
+     <span class="label">Immagini dal mare</span>
+     <h2 class="big-title">Gallery</h2>
+  </div>
+  </div>
+  <div class="gallery-mosaic">   
+    <div class="g-item">
+        <img src="img/2_conero_surf_vela.jpeg" alt="Conero surf vela">
+        <div class="g-overlay">
+            <span onclick="openLb('img/2_conero_surf_vela.jpeg')">Visualizza</span>
+        </div>
+    </div>
+    <div class="g-item">
+        <img src="img/conero_surf_club_portonovo_molo.jpeg" alt="Descrizione seconda immagine">
+        <div class="g-overlay">
+            <span onclick="openLb('img/conero_surf_club_portonovo_molo.jpeg')">Visualizza</span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<div class="container">
+<div id="doc-faq">
+
+    <h2 class="big-title">Tesseramento</h2>
+
+    <div class="doc-faq-container">
+      <div class="doc-section">
+        <h3>Iscrizione</h3>
+        <p>Accedi ai nostri documenti pubblici e moduli di iscrizione:</p>
+
+        <div class="gdpr-notice">
+          <h4>Trattamento dei dati personali (GDPR):</h4>
+          <p>
+            I dati che inserirai nel modulo (nome, cognome, email, ecc.) saranno 
+            trattati da Conero Surf Club esclusivamente per la 
+            gestione del rapporto associativo, in conformità al Reg. UE 2016/679.
+          </p>
+          <p>
+            <a href="privacy-policy.html">Leggi l'informativa completa sulla Privacy →</a>
+          </p>
+        </div>
+
+        <div class="gdpr-checkbox-container">
+          <input type="checkbox" id="gdprCheckbox" onchange="toggleGdprBtn()">
+          <div>
+            <label for="gdprCheckbox" class="gdpr-checkbox-label">
+              Ho letto l'<a href="privacy-policy.html" target="_blank">informativa privacy</a> 
+              e comprendo che i miei dati saranno trattati da Conero Surf Club per la 
+              gestione della domanda di ammissione a socio.
+            </label>
+            <span class="gdpr-mandatory">(Obbligatorio)</span>
+          </div>
+        </div>
+      </div>
+      <div class="gdpr-btn-wrapper">
+    <button class="gdpr-btn" id="gdprBtn" onclick="openModulo()" disabled>Apri il Modulo di Iscrizione ↓</button>
+    <div class="gdpr-btn-hint">Spunta la casella dell'informativa privacy per abilitare il pulsante</div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>     
+
+<hr class="sep">
+  <div id="faq">
+  <div class="container">
+  <div class="faq-section">
+    <h2 class="big-title">Domande Frequenti</h2>
+
+  <h3 style=font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">
+    FAQ
+  </h3>
+</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come posso diventare socio? 
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Per diventare socio, puoi compilare il modulo di iscrizione online cliccando sull'apposito bottone "Apri il modulo di iscrizione".</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono i costi di adesione?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Contattaci per ricevere informazioni dettagliate sulla quota associativa e le modalità di versamento.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono gli eventi in programma?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Visita la sezione "Eventi" per scoprire tutte le attività in programma. Se hai un'idea per un evento, contattaci!</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come posso proporre un evento?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Se sei socio e hai un'idea per un evento, puoi contattarci tramite la sezione "Contatti" o inviare una mail a <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a> con i dettagli della tua proposta.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali sono i vostri principi?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Il Conero Surf Club si fonda su 5 principi: tutela del territorio, promozione della cultura marina, inclusione comunitaria, sicurezza e formazione, e preservazione della tradizione del surf. Scopri di più nella sezione "Manifesto".</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Come gestite i miei dati personali?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Tutti i dati personali raccolti tramite il modulo di iscrizione sono trattati in piena conformità al <strong>GDPR</strong> (Regolamento Generale sulla Protezione dei Dati). I tuoi dati sono utilizzati esclusivamente per l'iscrizione e la gestione dell'associazione. Non li condivideremo con terzi senza il tuo consenso. Puoi richiedere accesso, modifica o cancellazione dei tuoi dati in qualsiasi momento.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        Quali campi sono obbligatori nel modulo?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-ans">
+        <p>Il modulo di iscrizione contiene campi marcati con <span class="required-marker">*</span> che sono obbligatori e necessari per elaborare la tua richiesta di adesione al Conero Surf Club. Questi includono informazioni personali essenziali come nome, cognome, email e data di nascita. Tutti gli altri campi sono opzionali.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<hr class="sep">
+
+<div id="contatti">
+  <div class="container">
+    <span class="label">Restiamo in contatto</span>
+    <h2 class="big-title">Contatti</h2>
+    
+    <div class="contatti-grid">
+      <div class="contatti-card">
+        <h3>Vorresti avere maggiori informazioni sulle nostre attività?</h3>
+        <p><a href="mailto:conerosurfclub@gmail.com">Scrivici</a></p>
+      </div>
+      
+      <div class="contatti-card">
+        <h3>Vorresti organizzare un evento?</h3>
+        <p><a href="mailto:conerosurfclub@gmail.com">Contattaci</a></p>
+      </div>
+      
+      <div class="contatti-card">
+        <h3>Vorresti tesserarti e diventare un socio attivo?</h3>
+        <p><a href="#doc-faq">Scopri come</a></p>
+      </div>
+    </div>
+    
+    <div class="contatti-card">
+   
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a></div>
+        </div>
+        <div>
+          <div class="info-label">Instagram</div>
+          <div class="info-value"><a href="https://www.instagram.com/conerosurfclub" target="_blank">@conerosurfclub</a></div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+<hr class="sep">
+<div id="donazioni">
+  <div class="container">
+    <span class="label">Sostienici</span>
+    <h2 class="big-title">Donazioni</h2>
+    <div class="don-box">
+      <p>Il Conero Surf Club è un'associazione no-profit che vive grazie alla passione dei suoi soci e al sostegno di chi crede nei valori del surf, della comunità e del rispetto per l'Adriatico. Le tue donazioni ci permettono di organizzare eventi, promuovere la sicurezza in mare e preservare il territorio del Conero.</p>
+      <div class="iban-block">
+        <div class="iban-label">Intestato a</div>
+        <div class="iban-value">CONERO SURF CLUB</div>
+        <div class="iban-label" style="margin-top:20px">IBAN</div>
+        <div class="iban-value" style="font-size:clamp(15px,2.2vw,22px)">IT 91Z 062 300 268 500 003 088 1350</div>
+        <div class="iban-note">Bonifico bancario · Causale: Donazione Conero Surf Club</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<footer>
+  <div class="container footer-inner">
+
+    <div class="f-brand">
+      <img src="img/conero_surf_club_logo.png" alt="Conero Surf Club Logo" class="f-logo" loading="lazy">
+      <div class="f-name">Conero Surf Club</div>
+    </div>
+
+    <div class="f-left">
+      <div class="f-col-title">Associazione</div>
+      <p class="f-desc">Un'associazione culturale, sociale e sportiva dedicata alla tutela del territorio della costa del Conero, alla comunità e alla valorizzazione della cultura del mare e dei valori del Surf.</p>
+
+      <div class="f-legal">
+        <div class="f-code"><strong>Codice Fiscale:</strong> 93174580428</div>
+        <div class="f-code"><strong>IBAN:</strong> IT 91Z 062 300 268 500 003 088 1350</div>
+      </div>
+    </div>
+
+    <div class="f-right">
+      <div class="f-col-title">Seguici</div>
+
+      <a href="https://www.instagram.com/conerosurfclub" target="_blank">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+        Instagram
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61576506789524" target="_blank">
+        <svg class="fb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M15 11h-2v7h-3v-7H8V8h2V6a3 3 0 0 1 3-3h2v3h-1a1 1 0 0 0-1 1v1h2z"></path></svg>
+        Facebook
+      </a>
+
+      <a href="mailto:conerosurfclub@gmail.com">conerosurfclub@gmail.com</a>
+    </div>
+    <hr class="section-divider">
+
+    <div class="f-tail f-copy">
+        <span class="f-code">© 2026 Conero Surf Club — Tutti i diritti riservati</span>
+        <span>Design &amp; Codice di <a href="https://www.alessandrodifa.com" target="_blank" rel="noopener">Alessandro DiFa</a></span>
+    </div>
+    
+
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
 <script>
-/* Menu mobile di riserva: se main.js è in cache/bloccato nel browser di Instagram, il menu funziona lo stesso */
-(function () {
-  var btn = document.querySelector('.menu-toggle');
-  var menu = document.querySelector('.nav-links');
-  if (!btn || !menu) return;
+// mobile menu
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 
-  var fresh = btn.cloneNode(true);            // toglie i listener di main.js: niente doppio toggle
-  btn.parentNode.replaceChild(fresh, btn);
-  btn = fresh;
+// GDPR checkbox
+function toggleGdprBtn(){
+  const checkbox=document.getElementById('gdprCheckbox');
+  const btn=document.getElementById('gdprBtn');
+  btn.disabled=!checkbox.checked;
+}
 
-  function setOpen(open) {
-    menu.classList.toggle('active', open);
-    btn.classList.toggle('active', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+// Apri modulo
+function openModulo(){
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLSdm-NXuq1mlJ0FLHdFh9Bxd5BHH6Xv7IJCC7TCfzRU5RWMJ6w/viewform','_blank');
+}
+
+// faq
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling,icon=btn.querySelector('.faq-icon'),open=ans.classList.contains('open');
+  document.querySelectorAll('.faq-ans.open').forEach(el=>{
+    el.classList.remove('open');
+    el.previousElementSibling.querySelector('.faq-icon').textContent='+';
+  });
+  if(!open){ans.classList.add('open');icon.textContent='−'}
+}
+
+// lightbox
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('active')}
+function closeLb(){document.getElementById('lb').classList.remove('active')}
+
+// active nav on scroll
+const sections=['home','chi-siamo','manifesto','eventi','blog','gallery','doc-faq','contatti'];
+const navLinks=document.querySelectorAll('.nav-bar a[data-s]');
+const navH=document.getElementById('mainNav').offsetHeight+10;
+
+function onScroll(){
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=navH+40){current=id}
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.dataset.s===current);
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+// blog toggle dinamico (chiude il precedente e apre quello cliccato)
+function toggleBlogDinamico(btn, fileUrl) {
+  const ans = btn.nextElementSibling;
+  const icon = btn.querySelector('.blog-icon');
+  const isOpen = ans.classList.contains('open');
+
+  // 1. Chiude SEMPRE tutti gli altri articoli aperti prima di proseguire
+  document.querySelectorAll('#blog .faq-ans.open').forEach(el => {
+    if (el !== ans) {
+      el.classList.remove('open');
+      const prevIcon = el.previousElementSibling ? el.previousElementSibling.querySelector('.blog-icon') : null;
+      if (prevIcon) prevIcon.innerHTML = '&gt;';
+    }
+  });
+
+  // 2. Se quello cliccato era già aperto, lo chiude
+  if (isOpen) {
+    ans.classList.remove('open');
+    icon.innerHTML = '&gt;';
+  } else {
+    // 3. Se era chiuso, lo apre e carica il file
+    if (!ans.dataset.loaded) {
+      ans.innerHTML = "<p>Caricamento in corso...</p>";
+      fetch(fileUrl)
+        .then(response => {
+          if (!response.ok) throw new Error("File non trovato");
+          return response.text();
+        })
+        .then(data => {
+          ans.innerHTML = data;
+          ans.dataset.loaded = "true";
+        })
+        .catch(() => {
+          ans.innerHTML = "<p>Impossibile caricare l'articolo.</p>";
+        });
+    }
+    ans.classList.add('open');
+    icon.innerHTML = 'v';
   }
-  btn.addEventListener('click', function (e) { e.preventDefault(); setOpen(!menu.classList.contains('active')); });
-  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-  window.addEventListener('resize', function () { if (window.innerWidth > 900) setOpen(false); });
-})();
+}
 </script>
-
 </body>
 </html>
