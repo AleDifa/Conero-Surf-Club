@@ -260,6 +260,7 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
   font-size:16px;font-weight:300;line-height:1.8;
   color:rgba(255,255,255,0.68);margin-bottom:20px;
 }
+
 .ig-btn{
   display:inline-flex;
   align-items:center;
@@ -272,21 +273,21 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
   transition:all 0.2s;
   max-width:100%;
   box-sizing:border-box;
-  flex-wrap:wrap;         /* permette di andare a capo se serve */
+  flex-wrap:wrap;
 }
-
 .ig-btn:hover{background:var(--accent);color:#000}
 .ig-btn svg{width:18px;height:18px}
+.ig-btn span{
+  min-width:0;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
 .eventi-prop{
   background:rgba(100,200,232,0.02);
   border:1px solid rgba(100,200,232,0.1);
   padding:44px 40px;
   text-align:center;
-}
-.ig-btn span{
-    min-width:0;             /* <-- chiave: toglie il blocco di flexbox */
-  overflow-wrap:break-word;  /* permette di andare a capo se necessario */
-  word-break:break-word;
 }
 .eventi-prop h3{
   font-family:'Barlow Condensed',sans-serif;
@@ -299,7 +300,60 @@ hr.sep{height:1px;background:var(--border);border:none;margin:0}
   color:rgba(255,255,255,0.65);
 }
 
+/* ── Locandine eventi ── */
+.eventi-gallery{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-top:24px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+}
+
+/* Card: misure proprie, annullano quelle della gallery grande */
+.eventi-gallery .g-item,
+.eventi-gallery .g-item:nth-child(1),
+.eventi-gallery .g-item:nth-child(2){
+  position:relative;
+  width:148px;
+  height:203px;
+  min-height:0;
+  aspect-ratio:auto;
+  flex:0 0 148px;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.eventi-gallery .eventi-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  transition:transform 0.6s;
+}
+.eventi-gallery .g-item:hover .eventi-img{
+  transform:scale(1.03);
+}
+
+/* Overlay "Visualizza" */
+.eventi-gallery .g-overlay{
+  border-radius:8px;
+}
+.eventi-gallery .g-overlay span{
+  font-size:16px;
+  letter-spacing:0.2em;
+  color:#fff;
+}
+
+/* Mobile: "Visualizza" sempre visibile */
+@media (hover:none){
+  .eventi-gallery .g-overlay{opacity:1;}
+}
+
 /* ── GALLERY ── */
+
 
 .gallery-mosaic{
 display:grid;
@@ -331,7 +385,6 @@ gap:3px
     transform: scale(1.03);
 
 }
-
 .g-item:nth-child(1){min-height:295px}
 .g-item:nth-child(2){min-height:295px}
 
@@ -761,34 +814,11 @@ footer .fb-icon{
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:9999;align-items:center;justify-content:center}
 .lightbox.active{display:flex}
 .lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+
 .lb-close{position:absolute;top:26px;right:32px;font-size:30px;color:rgba(255,255,255,0.35);cursor:pointer;background:none;border:none;transition:color 0.2s;font-family:'Barlow',sans-serif}
 .lb-close:hover{color:var(--white)}
 
-.eventi-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
-  margin-bottom: 44px;
-  flex-wrap: wrap; /* per sicurezza su schermi piccoli */
-}
 
-.eventi-img {
-  width: 148px;
-  height: 203px;
-  object-fit: cover;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-.eventi-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
-  flex-wrap: wrap; /* per sicurezza su schermi piccoli */
-}
 
 
 /* ─── DESKTOP BASE (sopra 860px) ─── */
